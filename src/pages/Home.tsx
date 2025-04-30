@@ -51,7 +51,7 @@ export default function Home() {
             >
               <div className="rounded-full overflow-hidden border-4 border-primary/20 shadow-xl w-64 h-64 md:w-80 md:h-80">
                 <img 
-                  src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1050&q=80"
+                  src="/profile-image.jpg"
                   alt="Muhammad Suleman"
                   className="w-full h-full object-cover"
                 />
