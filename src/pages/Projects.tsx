@@ -1,0 +1,202 @@
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Filter, Github } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+// Mock data for projects
+const projects = [
+  {
+    id: 1,
+    title: "E-Commerce Platform",
+    description:
+      "A full-stack e-commerce platform with product listing, cart, and checkout functionality.",
+    image: "https://images.unsplash.com/photo-1661956602944-249bcd04b63f",
+    category: "Web",
+    tags: ["React", "Node.js", "MongoDB", "Stripe"],
+    githubUrl: "#",
+    demoUrl: "#",
+  },
+  {
+    id: 2,
+    title: "Task Management App",
+    description:
+      "A drag-and-drop task management application with team collaboration features.",
+    image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91",
+    category: "Web",
+    tags: ["React", "TypeScript", "Firebase"],
+    githubUrl: "#",
+    demoUrl: "#",
+  },
+  {
+    id: 3,
+    title: "Fitness Tracker Mobile App",
+    description:
+      "A mobile app for tracking workouts, nutrition, and fitness progress.",
+    image: "https://images.unsplash.com/photo-1579126038374-6064e9370f0f",
+    category: "Mobile",
+    tags: ["React Native", "Redux", "Firebase"],
+    githubUrl: "#",
+    demoUrl: "#",
+  },
+  {
+    id: 4,
+    title: "Weather Dashboard",
+    description:
+      "A weather dashboard showing forecasts and historical data visualization.",
+    image: "https://images.unsplash.com/photo-1561484930-998b6a7b22e8",
+    category: "Web",
+    tags: ["JavaScript", "Chart.js", "API Integration"],
+    githubUrl: "#",
+    demoUrl: "#",
+  },
+  {
+    id: 5,
+    title: "Portfolio Website",
+    description:
+      "A responsive portfolio website showcasing my projects and skills.",
+    image: "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8",
+    category: "Web",
+    tags: ["React", "TailwindCSS", "Framer Motion"],
+    githubUrl: "#",
+    demoUrl: "#",
+  },
+  {
+    id: 6,
+    title: "Chat Application",
+    description:
+      "Real-time chat application with private messaging and group chats.",
+    image: "https://images.unsplash.com/photo-1611606063065-ee7946f0787a",
+    category: "Web",
+    tags: ["React", "Socket.io", "Express", "MongoDB"],
+    githubUrl: "#",
+    demoUrl: "#",
+  },
+];
+
+// Categories for filtering
+const categories = ["All", "Web", "Mobile", "Design"];
+
+export default function Projects() {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  // Filter projects based on active category
+  const filteredProjects = activeCategory === "All"
+    ? projects
+    : projects.filter((project) => project.category === activeCategory);
+
+  return (
+    <div className="flex-1">
+      {/* Hero Section */}
+      <section className="py-20 md:py-32">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <h1 className="text-3xl md:text-5xl font-bold">My Projects</h1>
+            <p className="mt-4 text-xl text-muted-foreground">
+              Explore my latest work and the technologies I've used to build them.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Projects Filter & Grid */}
+      <section className="section-padding">
+        <div className="container">
+          {/* Filter */}
+          <div className="mb-8 flex flex-wrap gap-3 justify-center">
+            {categories.map((category) => (
+              <Button
+                key={category}
+                variant={activeCategory === category ? "default" : "outline"}
+                size="sm"
+                onClick={() => setActiveCategory(category)}
+                className="rounded-full"
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
+
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="h-full flex flex-col overflow-hidden group">
+                  <div className="aspect-video w-full overflow-hidden bg-muted">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-full w-full object-cover object-center transition-all group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <CardTitle>{project.title}</CardTitle>
+                      <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+                        {project.category}
+                      </span>
+                    </div>
+                    <CardDescription className="line-clamp-2">
+                      {project.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-muted-foreground"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                  <CardFooter className="flex items-center justify-between">
+                    <Button variant="ghost" size="sm" asChild>
+                      <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                        View Demo
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                    <Button variant="outline" size="icon" className="rounded-full" asChild>
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <Github className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          {filteredProjects.length === 0 && (
+            <div className="py-12 text-center">
+              <p className="text-muted-foreground">No projects found in this category.</p>
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
+  );
+}
