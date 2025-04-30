@@ -19,9 +19,9 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider defaultTheme="system" storageKey="theme">
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
         <BrowserRouter>
+          <Toaster />
+          <Sonner />
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
