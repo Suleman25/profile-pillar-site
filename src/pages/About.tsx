@@ -120,15 +120,9 @@ export default function About() {
                     </p>
                   </div>
                   <div className="rounded-lg bg-card p-4 shadow">
-                    <h4 className="font-semibold">Software Developer</h4>
+                    <h4 className="font-semibold">Software Developer Intern</h4>
                     <p className="text-sm text-muted-foreground">
-                      WebDev Agency • 2018 - 2021
-                    </p>
-                  </div>
-                  <div className="rounded-lg bg-card p-4 shadow">
-                    <h4 className="font-semibold">Junior Developer</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Startup Co. • 2017 - 2018
+                      WebDev Agency • 2020 - 2021
                     </p>
                   </div>
                 </div>
