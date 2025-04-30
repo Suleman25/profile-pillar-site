@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col items-center md:items-start gap-2">
             <Link to="/" className="font-bold text-xl">
-              <span className="text-primary">John Doe</span>
+              <span className="text-primary">Muhammad Suleman</span>
             </Link>
             <p className="text-sm text-muted-foreground text-center md:text-left">
               Software Engineer & Full-Stack Developer
@@ -45,7 +45,7 @@ export function Footer() {
               <Twitter className="h-5 w-5" />
             </a>
             <a
-              href="mailto:john@example.com"
+              href="mailto:suleman@gmail.com"
               className="rounded-full p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
               aria-label="Email"
             >
@@ -55,7 +55,8 @@ export function Footer() {
         </div>
         
         <div className="mt-8 pt-6 border-t text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} John Doe. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Muhammad Suleman. All rights reserved.</p>
+          <p className="mt-2">Developed by Suleman</p>
         </div>
       </div>
     </footer>
