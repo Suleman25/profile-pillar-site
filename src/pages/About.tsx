@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { ArrowDown, BookOpen, Briefcase, Code, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -70,7 +69,7 @@ export default function About() {
                   My journey began when I built my first website in college, and I've been hooked ever since.
                 </p>
                 <p>
-                  With a background in Computer Science from the University of Technology, I've developed a strong 
+                  With a background in Computer Science from the University of Lahore, I've developed a strong 
                   foundation in software development principles and practices. I enjoy solving complex problems and
                   creating user-friendly interfaces that deliver exceptional experiences.
                 </p>
@@ -100,15 +99,9 @@ export default function About() {
                 </div>
                 <div className="space-y-4">
                   <div className="rounded-lg bg-card p-4 shadow">
-                    <h4 className="font-semibold">MSc in Computer Science</h4>
+                    <h4 className="font-semibold">BSc in Information Engineering Technology</h4>
                     <p className="text-sm text-muted-foreground">
-                      University of Technology • 2015 - 2017
-                    </p>
-                  </div>
-                  <div className="rounded-lg bg-card p-4 shadow">
-                    <h4 className="font-semibold">BSc in Software Engineering</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Tech Institute • 2011 - 2015
+                      University of Lahore • 2021 - 2025
                     </p>
                   </div>
                 </div>
