@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { ArrowDown, BookOpen, Briefcase, Code, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -5,7 +6,6 @@ import { Button } from "@/components/ui/button";
 // Skills data
 const skills = [
   { name: "JavaScript", category: "Languages" },
-  { name: "TypeScript", category: "Languages" },
   { name: "HTML/CSS", category: "Languages" },
   { name: "React", category: "Frontend" },
   { name: "Next.js", category: "Frontend" },
@@ -13,6 +13,7 @@ const skills = [
   { name: "Redux", category: "Frontend" },
   { name: "Node.js", category: "Backend" },
   { name: "Express", category: "Backend" },
+  { name: "Django", category: "Backend" },
   { name: "MongoDB", category: "Backend" },
   { name: "PostgreSQL", category: "Backend" },
   { name: "Supabase", category: "Backend" },
