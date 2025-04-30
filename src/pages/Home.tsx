@@ -128,7 +128,7 @@ export default function Home() {
                       React
                     </span>
                     <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-muted-foreground">
-                      TypeScript
+                      JavaScript
                     </span>
                     <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-muted-foreground">
                       TailwindCSS
