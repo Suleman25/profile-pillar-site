@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Filter, Github } from "lucide-react";
+import { ArrowRight, Github, ListTodo } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,74 +12,19 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-// Mock data for projects
+// Project data
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "Todo-Buddy",
     description:
-      "A full-stack e-commerce platform with product listing, cart, and checkout functionality.",
-    image: "https://images.unsplash.com/photo-1661956602944-249bcd04b63f",
+      "A comprehensive task management application with drag-and-drop functionality, categories, priorities, and deadline notifications to boost productivity.",
+    icon: <ListTodo className="h-24 w-24 text-primary" />,
     category: "Web",
-    tags: ["React", "Node.js", "MongoDB", "Stripe"],
-    githubUrl: "#",
+    tags: ["React", "TypeScript", "TailwindCSS", "Firebase"],
+    githubUrl: "https://github.com/yourusername/todo-buddy",
     demoUrl: "#",
-  },
-  {
-    id: 2,
-    title: "Task Management App",
-    description:
-      "A drag-and-drop task management application with team collaboration features.",
-    image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91",
-    category: "Web",
-    tags: ["React", "TypeScript", "Firebase"],
-    githubUrl: "#",
-    demoUrl: "#",
-  },
-  {
-    id: 3,
-    title: "Fitness Tracker Mobile App",
-    description:
-      "A mobile app for tracking workouts, nutrition, and fitness progress.",
-    image: "https://images.unsplash.com/photo-1579126038374-6064e9370f0f",
-    category: "Mobile",
-    tags: ["React Native", "Redux", "Firebase"],
-    githubUrl: "#",
-    demoUrl: "#",
-  },
-  {
-    id: 4,
-    title: "Weather Dashboard",
-    description:
-      "A weather dashboard showing forecasts and historical data visualization.",
-    image: "https://images.unsplash.com/photo-1561484930-998b6a7b22e8",
-    category: "Web",
-    tags: ["JavaScript", "Chart.js", "API Integration"],
-    githubUrl: "#",
-    demoUrl: "#",
-  },
-  {
-    id: 5,
-    title: "Portfolio Website",
-    description:
-      "A responsive portfolio website showcasing my projects and skills.",
-    image: "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8",
-    category: "Web",
-    tags: ["React", "TailwindCSS", "Framer Motion"],
-    githubUrl: "#",
-    demoUrl: "#",
-  },
-  {
-    id: 6,
-    title: "Chat Application",
-    description:
-      "Real-time chat application with private messaging and group chats.",
-    image: "https://images.unsplash.com/photo-1611606063065-ee7946f0787a",
-    category: "Web",
-    tags: ["React", "Socket.io", "Express", "MongoDB"],
-    githubUrl: "#",
-    demoUrl: "#",
-  },
+  }
 ];
 
 // Categories for filtering
@@ -131,7 +76,7 @@ export default function Projects() {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6 max-w-4xl mx-auto">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -141,13 +86,14 @@ export default function Projects() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Card className="h-full flex flex-col overflow-hidden group">
-                  <div className="aspect-video w-full overflow-hidden bg-muted">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="h-full w-full object-cover object-center transition-all group-hover:scale-105"
-                      loading="lazy"
-                    />
+                  <div className="aspect-video w-full overflow-hidden bg-muted flex items-center justify-center">
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                      className="flex items-center justify-center p-8 bg-primary/10 rounded-full"
+                    >
+                      {project.icon}
+                    </motion.div>
                   </div>
                   <CardHeader>
                     <div className="flex items-center justify-between">
@@ -156,7 +102,7 @@ export default function Projects() {
                         {project.category}
                       </span>
                     </div>
-                    <CardDescription className="line-clamp-2">
+                    <CardDescription>
                       {project.description}
                     </CardDescription>
                   </CardHeader>

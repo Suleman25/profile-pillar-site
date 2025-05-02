@@ -1,4 +1,3 @@
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
@@ -53,6 +52,28 @@ export default function Contact() {
     form.reset();
   }
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
     <div className="flex-1">
       {/* Hero Section */}
@@ -64,7 +85,9 @@ export default function Contact() {
             transition={{ duration: 0.5 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h1 className="text-3xl md:text-5xl font-bold">Get in Touch</h1>
+            <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+              Get in Touch
+            </h1>
             <p className="mt-4 text-xl text-muted-foreground">
               Have a question or want to work together? Send me a message!
             </p>
@@ -85,48 +108,73 @@ export default function Contact() {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-2xl font-bold">Contact Information</h2>
+                <h2 className="text-2xl font-bold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+                  Contact Information
+                </h2>
                 <p className="mt-2 text-muted-foreground">
                   Feel free to reach out through any of these channels.
                   I typically respond within 24-48 hours.
                 </p>
               </div>
 
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="rounded-full p-3 bg-primary/10 text-primary">
+              <motion.div 
+                className="space-y-6"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <motion.div className="flex items-start gap-4" variants={itemVariants}>
+                  <motion.div 
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="rounded-full p-3 bg-primary/10 text-primary"
+                  >
                     <Mail className="h-6 w-6" />
-                  </div>
+                  </motion.div>
                   <div>
                     <h3 className="font-semibold">Email</h3>
                     <p className="text-muted-foreground">sulemanjamil177@gmail.com</p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-start gap-4">
-                  <div className="rounded-full p-3 bg-primary/10 text-primary">
+                <motion.div className="flex items-start gap-4" variants={itemVariants}>
+                  <motion.div 
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="rounded-full p-3 bg-primary/10 text-primary"
+                  >
                     <Phone className="h-6 w-6" />
-                  </div>
+                  </motion.div>
                   <div>
                     <h3 className="font-semibold">Phone</h3>
                     <p className="text-muted-foreground">+92 3211431470</p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-start gap-4">
-                  <div className="rounded-full p-3 bg-primary/10 text-primary">
+                <motion.div className="flex items-start gap-4" variants={itemVariants}>
+                  <motion.div 
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="rounded-full p-3 bg-primary/10 text-primary"
+                  >
                     <MapPin className="h-6 w-6" />
-                  </div>
+                  </motion.div>
                   <div>
                     <h3 className="font-semibold">Location</h3>
                     <p className="text-muted-foreground">Lahore, Pakistan</p>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               <div className="pt-8 border-t">
-                <h3 className="font-semibold mb-4">Connect with me</h3>
-                <div className="flex gap-4">
+                <h3 className="font-semibold mb-4 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+                  Connect with me
+                </h3>
+                <motion.div 
+                  className="flex gap-4"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                >
                   <a
                     href="https://github.com"
                     target="_blank"
@@ -198,7 +246,7 @@ export default function Contact() {
                       <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
                     </svg>
                   </a>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
 
@@ -209,8 +257,14 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="rounded-xl border bg-card p-6 shadow-sm">
-                <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
+              <motion.div 
+                className="rounded-xl border bg-card p-6 shadow-sm"
+                whileHover={{ boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
+                transition={{ duration: 0.3 }}
+              >
+                <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                  Send a Message
+                </h2>
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -279,7 +333,7 @@ export default function Contact() {
                 <p className="text-sm text-muted-foreground mt-4 text-center">
                   * All fields are required
                 </p>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
