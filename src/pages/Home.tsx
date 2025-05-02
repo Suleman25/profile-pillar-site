@@ -54,14 +54,14 @@ const logoVariants = {
 
 // Tech stack with logos
 const techStack = [
-  { name: "React", icon: "/logos/react.svg" },
-  { name: "Node.js", icon: "/logos/nodejs.svg" },
-  { name: "JavaScript", icon: "/logos/javascript.svg" },
-  { name: "Next.js", icon: "/logos/nextjs.svg" },
-  { name: "TailwindCSS", icon: "/logos/tailwindcss.svg" },
-  { name: "MongoDB", icon: "/logos/mongodb.svg" },
-  { name: "PostgreSQL", icon: "/logos/postgresql.svg" },
-  { name: "Django", icon: "/logos/django.svg" }
+  { name: "React", icon: "/logos/react.svg", color: "#61DAFB" },
+  { name: "Node.js", icon: "/logos/nodejs.svg", color: "#43853D" },
+  { name: "JavaScript", icon: "/logos/javascript.svg", color: "#F7DF1E" },
+  { name: "Next.js", icon: "/logos/nextjs.svg", color: "#FFFFFF" },
+  { name: "TailwindCSS", icon: "/logos/tailwindcss.svg", color: "#06B6D4" },
+  { name: "MongoDB", icon: "/logos/mongodb.svg", color: "#00ED64" },
+  { name: "PostgreSQL", icon: "/logos/postgresql.svg", color: "#336791" },
+  { name: "Django", icon: "/logos/django.svg", color: "#44B78B" }
 ];
 
 export default function Home() {
@@ -146,7 +146,7 @@ export default function Home() {
       </section>
 
       {/* Featured Skills Section */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-20 bg-background/60">
         <div className="container">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -168,24 +168,29 @@ export default function Home() {
                 viewport={{ once: true }}
                 variants={logoVariants}
                 custom={index}
-                className="flex flex-col items-center justify-center p-4 rounded-lg transition-all backdrop-blur-sm hover:bg-background/30"
+                className="flex flex-col items-center justify-center p-4 rounded-lg transition-all"
               >
                 <motion.div
-                  className="h-20 w-20 mb-3 flex items-center justify-center"
-                  whileHover={{ y: -8 }}
+                  className="h-24 w-24 mb-3 flex items-center justify-center rounded-xl p-2"
+                  style={{ background: '#111111' }}
+                  whileHover={{ 
+                    y: -8,
+                    boxShadow: `0 0 20px 2px ${tech.color}40`
+                  }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <img 
                     src={tech.icon} 
                     alt={tech.name} 
-                    className="h-14 w-14 transition-all duration-300"
+                    className="h-16 w-16 transition-all duration-300"
+                    style={{ filter: "drop-shadow(0 0 2px " + tech.color + ")" }}
                   />
                 </motion.div>
                 <motion.span 
                   className="text-sm font-medium"
                   whileHover={{ 
                     scale: 1.1,
-                    color: "hsl(var(--primary))"
+                    color: tech.color
                   }}
                 >
                   {tech.name}
