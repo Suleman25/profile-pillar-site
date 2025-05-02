@@ -99,10 +99,22 @@
   }
 
   .tech-stack-icon {
-    @apply h-12 w-12 mb-2 transition-all duration-300;
+    @apply h-14 w-14 transition-all duration-300;
   }
   
   .tech-stack-icon:hover {
-    @apply scale-110 rotate-3;
+    @apply scale-125 rotate-3 filter drop-shadow-lg;
+  }
+  
+  .glowing-icon {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+  }
+  
+  .tech-icon-container {
+    @apply flex items-center justify-center h-20 w-20 rounded-full transition-all duration-300;
+  }
+  
+  .tech-icon-container:hover {
+    @apply bg-background/20 backdrop-blur-sm;
   }
 }

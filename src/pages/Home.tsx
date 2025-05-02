@@ -42,11 +42,11 @@ const logoVariants = {
     }
   },
   hover: { 
-    scale: 1.2,
+    scale: 1.3,
     rotate: [0, 5, -5, 0],
-    filter: "drop-shadow(0 0 8px rgba(255,255,255,0.6))",
+    filter: "drop-shadow(0 0 12px rgba(255,255,255,0.8))",
     transition: { 
-      duration: 0.5,
+      duration: 0.6,
       ease: "easeInOut"
     }
   }
@@ -168,20 +168,28 @@ export default function Home() {
                 viewport={{ once: true }}
                 variants={logoVariants}
                 custom={index}
-                className="flex flex-col items-center justify-center p-4 rounded-lg transition-all"
+                className="flex flex-col items-center justify-center p-4 rounded-lg transition-all backdrop-blur-sm hover:bg-background/30"
               >
                 <motion.div
-                  className="h-16 w-16 mb-2 flex items-center justify-center"
-                  whileHover={{ y: -5 }}
+                  className="h-20 w-20 mb-3 flex items-center justify-center"
+                  whileHover={{ y: -8 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <img 
                     src={tech.icon} 
                     alt={tech.name} 
-                    className="h-12 w-12 transition-all duration-300"
+                    className="h-14 w-14 transition-all duration-300"
                   />
                 </motion.div>
-                <span className="text-sm font-medium">{tech.name}</span>
+                <motion.span 
+                  className="text-sm font-medium"
+                  whileHover={{ 
+                    scale: 1.1,
+                    color: "hsl(var(--primary))"
+                  }}
+                >
+                  {tech.name}
+                </motion.span>
               </motion.div>
             ))}
           </div>

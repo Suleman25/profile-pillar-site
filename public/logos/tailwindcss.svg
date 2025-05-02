@@ -1,8 +1,8 @@
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <rect width="20" height="20" x="2" y="2" rx="2" opacity="0.1" fill="#06b6d4"></rect>
-  <path d="m12 14 5-5" stroke="#06b6d4"></path>
-  <circle cx="8" cy="9" r="2" stroke="#06b6d4"></circle>
-  <path d="M10 14a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v0a2 2 0 0 1 2-2" stroke="#06b6d4"></path>
-  <path d="M18 10a2 2 0 0 1-2-2v0a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2" stroke="#06b6d4"></path>
+  <rect width="20" height="20" x="2" y="2" rx="2" opacity="0.15" fill="#06b6d4"></rect>
+  <path d="m12 14 5-5" stroke="#06b6d4" stroke-width="2.5"></path>
+  <circle cx="8" cy="9" r="2" stroke="#06b6d4" fill="#06b6d4" stroke-width="2"></circle>
+  <path d="M10 14a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v0a2 2 0 0 1 2-2" stroke="#06b6d4" fill="#06b6d4" stroke-width="2"></path>
+  <path d="M18 10a2 2 0 0 1-2-2v0a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2" stroke="#06b6d4" fill="#06b6d4" stroke-width="2"></path>
 </svg>
