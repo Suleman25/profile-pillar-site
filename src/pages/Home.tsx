@@ -42,8 +42,9 @@ const logoVariants = {
     }
   },
   hover: { 
-    scale: 1.1,
+    scale: 1.2,
     rotate: [0, 5, -5, 0],
+    filter: "drop-shadow(0 0 8px rgba(255,255,255,0.6))",
     transition: { 
       duration: 0.5,
       ease: "easeInOut"
@@ -152,7 +153,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-2xl md:text-3xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+            className="text-2xl md:text-3xl font-bold text-center mb-12 gradient-text-primary"
           >
             My Tech Stack
           </motion.h2>
@@ -167,13 +168,19 @@ export default function Home() {
                 viewport={{ once: true }}
                 variants={logoVariants}
                 custom={index}
-                className="flex flex-col items-center justify-center p-4 rounded-lg bg-background shadow-sm transition-all"
+                className="flex flex-col items-center justify-center p-4 rounded-lg transition-all"
               >
-                <img 
-                  src={tech.icon} 
-                  alt={tech.name} 
-                  className="h-12 w-12 mb-2"
-                />
+                <motion.div
+                  className="h-16 w-16 mb-2 flex items-center justify-center"
+                  whileHover={{ y: -5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <img 
+                    src={tech.icon} 
+                    alt={tech.name} 
+                    className="h-12 w-12 transition-all duration-300"
+                  />
+                </motion.div>
                 <span className="text-sm font-medium">{tech.name}</span>
               </motion.div>
             ))}
