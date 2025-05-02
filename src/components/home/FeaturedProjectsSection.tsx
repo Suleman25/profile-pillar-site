@@ -36,18 +36,16 @@ export function FeaturedProjectsSection() {
             className="group rounded-lg overflow-hidden border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300"
           >
             <div className="aspect-video w-full overflow-hidden bg-muted flex items-center justify-center">
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.6 }}
-                className="flex items-center justify-center p-8 bg-primary/10 rounded-full"
-              >
-                <ListTodo className="h-24 w-24 text-primary" />
-              </motion.div>
+              <img 
+                src="/lovable-uploads/38806cf3-03a7-4ad9-a41d-8849fbcfba42.png" 
+                alt="Todo-Buddy Application" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="p-6">
               <h3 className="text-lg font-semibold">Todo-Buddy</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                A comprehensive task management application with drag-and-drop functionality, categories, priorities, and deadline notifications to boost productivity.
+                A comprehensive task management application with drag-and-drop functionality, categories, priorities, and deadline notifications to boost productivity. Built with Supabase for authentication and data storage.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-muted-foreground">
@@ -60,7 +58,7 @@ export function FeaturedProjectsSection() {
                   TailwindCSS
                 </span>
                 <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-muted-foreground">
-                  Firebase
+                  Supabase
                 </span>
               </div>
               <div className="mt-4 flex items-center justify-between">
@@ -72,7 +70,7 @@ export function FeaturedProjectsSection() {
                 </Link>
                 <div className="flex items-center gap-2">
                   <a
-                    href="https://github.com/yourusername/todo-buddy"
+                    href="https://github.com/Suleman25/lovable-todo-buddy"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="rounded-full p-1 text-muted-foreground hover:text-foreground transition-colors"

@@ -18,11 +18,12 @@ const projects = [
     id: 1,
     title: "Todo-Buddy",
     description:
-      "A comprehensive task management application with drag-and-drop functionality, categories, priorities, and deadline notifications to boost productivity.",
+      "A comprehensive task management application with drag-and-drop functionality, categories, priorities, and deadline notifications to boost productivity. Built with Supabase for authentication and data storage.",
+    image: "/lovable-uploads/38806cf3-03a7-4ad9-a41d-8849fbcfba42.png",
     icon: <ListTodo className="h-24 w-24 text-primary" />,
     category: "Web",
-    tags: ["React", "TypeScript", "TailwindCSS", "Firebase"],
-    githubUrl: "https://github.com/yourusername/todo-buddy",
+    tags: ["React", "TypeScript", "TailwindCSS", "Supabase"],
+    githubUrl: "https://github.com/Suleman25/lovable-todo-buddy",
     demoUrl: "#",
   }
 ];
@@ -87,13 +88,21 @@ export default function Projects() {
               >
                 <Card className="h-full flex flex-col overflow-hidden group">
                   <div className="aspect-video w-full overflow-hidden bg-muted flex items-center justify-center">
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                      className="flex items-center justify-center p-8 bg-primary/10 rounded-full"
-                    >
-                      {project.icon}
-                    </motion.div>
+                    {project.image ? (
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.6 }}
+                        className="flex items-center justify-center p-8 bg-primary/10 rounded-full"
+                      >
+                        {project.icon}
+                      </motion.div>
+                    )}
                   </div>
                   <CardHeader>
                     <div className="flex items-center justify-between">
