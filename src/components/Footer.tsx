@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -36,16 +36,16 @@ export function Footer() {
               <Linkedin className="h-5 w-5" />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-              aria-label="Twitter"
+              aria-label="Instagram"
             >
-              <Twitter className="h-5 w-5" />
+              <Instagram className="h-5 w-5" />
             </a>
             <a
-              href="mailto:suleman@gmail.com"
+              href="mailto:sulemanjamil177@gmail.com"
               className="rounded-full p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
               aria-label="Email"
             >
@@ -55,8 +55,7 @@ export function Footer() {
         </div>
         
         <div className="mt-8 pt-6 border-t text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Muhammad Suleman. All rights reserved.</p>
-          <p className="mt-2">Developed by Suleman</p>
+          <p>Developed by Muhammad Suleman</p>
         </div>
       </div>
     </footer>

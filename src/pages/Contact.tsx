@@ -99,7 +99,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <p className="text-muted-foreground">john@example.com</p>
+                    <p className="text-muted-foreground">sulemanjamil177@gmail.com</p>
                   </div>
                 </div>
 
@@ -109,7 +109,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Phone</h3>
-                    <p className="text-muted-foreground">+1 (123) 456-7890</p>
+                    <p className="text-muted-foreground">+92 3211431470</p>
                   </div>
                 </div>
 
@@ -119,7 +119,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Location</h3>
-                    <p className="text-muted-foreground">San Francisco, CA</p>
+                    <p className="text-muted-foreground">Lahore, Pakistan</p>
                   </div>
                 </div>
               </div>
@@ -175,11 +175,11 @@ export default function Contact() {
                     </svg>
                   </a>
                   <a
-                    href="https://twitter.com"
+                    href="https://instagram.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="rounded-full p-2 bg-muted text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Twitter"
+                    aria-label="Instagram"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -193,7 +193,9 @@ export default function Contact() {
                       strokeLinejoin="round"
                       className="h-5 w-5"
                     >
-                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
                     </svg>
                   </a>
                 </div>

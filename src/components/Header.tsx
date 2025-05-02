@@ -23,9 +23,10 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur-sm">
       <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-bold text-2xl">
-          <span className="text-primary">JD</span>
-          <span className="hidden sm:inline">Portfolio</span>
+        <Link to="/" className="flex items-center gap-2">
+          <div className="h-9 w-9 rounded-full bg-primary flex items-center justify-center">
+            <span className="text-primary-foreground font-bold text-lg">MS</span>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
