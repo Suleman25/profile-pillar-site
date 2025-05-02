@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col items-center md:items-start gap-2">
             <Link to="/" className="font-bold text-xl">
-              <span className="text-primary">Muhammad Suleman</span>
+              <span className="gradient-text-primary">Muhammad Suleman</span>
             </Link>
             <p className="text-sm text-muted-foreground text-center md:text-left">
               Software Engineer & Full-Stack Developer

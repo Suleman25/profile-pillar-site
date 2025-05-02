@@ -29,6 +29,40 @@ const staggerContainer = {
   }
 };
 
+// Logo animation variants
+const logoVariants = {
+  hidden: { scale: 0.8, opacity: 0 },
+  visible: { 
+    scale: 1, 
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 260,
+      damping: 20
+    }
+  },
+  hover: { 
+    scale: 1.1,
+    rotate: [0, 5, -5, 0],
+    transition: { 
+      duration: 0.5,
+      ease: "easeInOut"
+    }
+  }
+};
+
+// Tech stack with logos
+const techStack = [
+  { name: "React", icon: "/logos/react.svg" },
+  { name: "Node.js", icon: "/logos/nodejs.svg" },
+  { name: "JavaScript", icon: "/logos/javascript.svg" },
+  { name: "Next.js", icon: "/logos/nextjs.svg" },
+  { name: "TailwindCSS", icon: "/logos/tailwindcss.svg" },
+  { name: "MongoDB", icon: "/logos/mongodb.svg" },
+  { name: "PostgreSQL", icon: "/logos/postgresql.svg" },
+  { name: "Django", icon: "/logos/django.svg" }
+];
+
 export default function Home() {
   return (
     <div className="flex-1">
@@ -46,7 +80,7 @@ export default function Home() {
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                   <span className="block">Hi, I'm</span>
                   <motion.span 
-                    className="text-primary block mt-2"
+                    className="block mt-2 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
@@ -118,29 +152,29 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-2xl md:text-3xl font-bold text-center mb-12"
+            className="text-2xl md:text-3xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
           >
             My Tech Stack
           </motion.h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
-            {[
-              "React", "Node.js", "JavaScript", "Next.js", 
-              "TailwindCSS", "MongoDB", "PostgreSQL", "Django"
-            ].map((skill, index) => (
+            {techStack.map((tech, index) => (
               <motion.div
-                key={skill}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                key={tech.name}
+                initial="hidden"
+                whileInView="visible"
+                whileHover="hover"
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-                }}
+                variants={logoVariants}
+                custom={index}
                 className="flex flex-col items-center justify-center p-4 rounded-lg bg-background shadow-sm transition-all"
               >
-                <span className="text-sm font-medium">{skill}</span>
+                <img 
+                  src={tech.icon} 
+                  alt={tech.name} 
+                  className="h-12 w-12 mb-2"
+                />
+                <span className="text-sm font-medium">{tech.name}</span>
               </motion.div>
             ))}
           </div>
@@ -157,7 +191,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="flex justify-between items-center mb-12"
           >
-            <h2 className="text-2xl md:text-3xl font-bold">Featured Projects</h2>
+            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Featured Projects</h2>
             <Button asChild variant="outline">
               <Link to="/projects">
                 View All
@@ -247,7 +281,7 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="flex flex-col items-center text-center max-w-3xl mx-auto"
           >
-            <h2 className="text-2xl md:text-3xl font-bold">
+            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
               Let's Work Together
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">

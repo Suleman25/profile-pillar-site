@@ -104,7 +104,7 @@ export default function Projects() {
             transition={{ duration: 0.5 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h1 className="text-3xl md:text-5xl font-bold">My Projects</h1>
+            <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">My Projects</h1>
             <p className="mt-4 text-xl text-muted-foreground">
               Explore my latest work and the technologies I've used to build them.
             </p>

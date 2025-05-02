@@ -1,0 +1,8 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-nodejs">
+  <path d="M12 22v-4l-8-5V5l8-5 8 5v8l-8 5Z" opacity="0.1" fill="#43853d"></path>
+  <path d="m12 11 2 1v2l-2 1-2-1v-2l2-1Z"></path>
+  <path d="m12 6-2-1v2l2 1 2-1V5l-2-1v2Z"></path>
+  <path d="M19 13.9v-2l-2-1-2 1v2l2 1 2-1Z"></path>
+  <path d="M7 13.9v-2l2-1 2 1v2l-2 1-2-1Z"></path>
+</svg>
