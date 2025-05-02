@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, ListTodo } from "lucide-react";
+import { ArrowRight, Github, ListTodo, Code, BarChart3, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -24,6 +24,42 @@ const projects = [
     category: "Web",
     tags: ["React", "TypeScript", "TailwindCSS", "Supabase"],
     githubUrl: "https://github.com/Suleman25/lovable-todo-buddy",
+    demoUrl: "#",
+  },
+  {
+    id: 2,
+    title: "Analytics Dashboard",
+    description:
+      "Interactive analytics dashboard with real-time data visualization, customizable widgets, and comprehensive reporting features for business intelligence.",
+    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    icon: <BarChart3 className="h-24 w-24 text-primary" />,
+    category: "Web",
+    tags: ["React", "TypeScript", "Recharts", "Redux"],
+    githubUrl: "#",
+    demoUrl: "#",
+  },
+  {
+    id: 3,
+    title: "Code Snippets",
+    description:
+      "A developer-focused application for saving and organizing code snippets with syntax highlighting, tags, and search functionality.",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+    icon: <Code className="h-24 w-24 text-primary" />,
+    category: "Web",
+    tags: ["React", "Next.js", "MongoDB", "Prism.js"],
+    githubUrl: "#",
+    demoUrl: "#",
+  },
+  {
+    id: 4,
+    title: "UI Component Library",
+    description:
+      "A comprehensive collection of reusable UI components built with React and styled with Tailwind CSS, complete with documentation and examples.",
+    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    icon: <Layers className="h-24 w-24 text-primary" />,
+    category: "Design",
+    tags: ["React", "Tailwind CSS", "Storybook", "TypeScript"],
+    githubUrl: "#",
     demoUrl: "#",
   }
 ];
@@ -77,7 +113,7 @@ export default function Projects() {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -85,14 +121,18 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="h-full"
               >
                 <Card className="h-full flex flex-col overflow-hidden group">
                   <div className="aspect-video w-full overflow-hidden bg-muted flex items-center justify-center">
                     {project.image ? (
-                      <img 
+                      <motion.img 
                         src={project.image} 
                         alt={project.title} 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        initial={{ scale: 1 }}
+                        whileHover={{ scale: 1.05 }}
                       />
                     ) : (
                       <motion.div

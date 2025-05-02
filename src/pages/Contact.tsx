@@ -28,6 +28,34 @@ const staggerContainer = {
   },
 };
 
+// Contact info animation variants
+const iconAnimation = {
+  hidden: { scale: 0.8, opacity: 0 },
+  visible: { 
+    scale: 1, 
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 10
+    }
+  },
+  hover: { 
+    scale: 1.2,
+    rotate: 5,
+    transition: { type: "spring", stiffness: 400, damping: 10 }
+  }
+};
+
+const textAnimation = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    transition: { type: "spring", stiffness: 100, damping: 10 }
+  }
+};
+
 export default function Contact() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -113,49 +141,93 @@ export default function Contact() {
               </motion.div>
 
               <motion.div variants={fadeInUp} className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
+                <motion.div 
+                  className="flex items-start space-x-4"
+                  initial="hidden"
+                  whileInView="visible"
+                  whileHover="hover"
+                  viewport={{ once: true }}
+                >
+                  <motion.div 
+                    className="bg-primary/10 p-3 rounded-full"
+                    variants={iconAnimation}
+                  >
                     <Mail className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
+                  </motion.div>
+                  <motion.div variants={textAnimation}>
                     <h3 className="font-medium">Email</h3>
                     <p className="text-muted-foreground">hello@example.com</p>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
+                <motion.div 
+                  className="flex items-start space-x-4"
+                  initial="hidden"
+                  whileInView="visible"
+                  whileHover="hover"
+                  viewport={{ once: true }}
+                >
+                  <motion.div 
+                    className="bg-primary/10 p-3 rounded-full"
+                    variants={iconAnimation}
+                  >
                     <Phone className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
+                  </motion.div>
+                  <motion.div variants={textAnimation}>
                     <h3 className="font-medium">Phone</h3>
                     <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
+                <motion.div 
+                  className="flex items-start space-x-4"
+                  initial="hidden"
+                  whileInView="visible"
+                  whileHover="hover"
+                  viewport={{ once: true }}
+                >
+                  <motion.div 
+                    className="bg-primary/10 p-3 rounded-full"
+                    variants={iconAnimation}
+                  >
                     <MapPin className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
+                  </motion.div>
+                  <motion.div variants={textAnimation}>
                     <h3 className="font-medium">Location</h3>
                     <p className="text-muted-foreground">
                       San Francisco, California
                     </p>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               </motion.div>
 
               <motion.div
                 variants={fadeInUp}
                 className="pt-8 border-t border-border"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
               >
-                <h3 className="text-lg font-medium mb-4">Availability</h3>
-                <p className="text-muted-foreground">
+                <motion.h3 
+                  className="text-lg font-medium mb-4"
+                  variants={{ 
+                    hidden: { opacity: 0, y: 10 }, 
+                    visible: { opacity: 1, y: 0, transition: { delay: 0.2 } } 
+                  }}
+                >
+                  Availability
+                </motion.h3>
+                <motion.p 
+                  className="text-muted-foreground"
+                  variants={{ 
+                    hidden: { opacity: 0, y: 10 }, 
+                    visible: { opacity: 1, y: 0, transition: { delay: 0.3 } } 
+                  }}
+                >
                   I'm currently available for freelance work or full-time
                   positions. If you have a project that needs coding skills, I'm
                   your developer!
-                </p>
+                </motion.p>
               </motion.div>
             </motion.div>
 

@@ -1,10 +1,35 @@
 
 import { motion } from "framer-motion";
-import { ArrowRight, Github, ListTodo } from "lucide-react";
+import { ArrowRight, Github, ListTodo, Code, BarChart3, Layers } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 export function FeaturedProjectsSection() {
+  const featuredProjects = [
+    {
+      id: 1,
+      title: "Todo-Buddy",
+      description:
+        "A comprehensive task management application with drag-and-drop functionality, categories, priorities, and deadline notifications to boost productivity. Built with Supabase for authentication and data storage.",
+      image: "/lovable-uploads/38806cf3-03a7-4ad9-a41d-8849fbcfba42.png",
+      icon: <ListTodo className="h-16 w-16 text-primary" />,
+      tags: ["React", "TypeScript", "TailwindCSS", "Supabase"],
+      githubUrl: "https://github.com/Suleman25/lovable-todo-buddy",
+      demoUrl: "#",
+    },
+    {
+      id: 2,
+      title: "Analytics Dashboard",
+      description:
+        "Interactive analytics dashboard with real-time data visualization, customizable widgets, and comprehensive reporting features.",
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+      icon: <BarChart3 className="h-16 w-16 text-primary" />,
+      tags: ["React", "TypeScript", "Recharts", "Redux"],
+      githubUrl: "#",
+      demoUrl: "#",
+    },
+  ];
+
   return (
     <section className="section-padding">
       <div className="container">
@@ -26,71 +51,70 @@ export function FeaturedProjectsSection() {
           </Button>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            whileHover={{ y: -10 }}
-            className="group rounded-lg overflow-hidden border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300"
-          >
-            <div className="aspect-video w-full overflow-hidden bg-muted flex items-center justify-center">
-              <img 
-                src="/lovable-uploads/38806cf3-03a7-4ad9-a41d-8849fbcfba42.png" 
-                alt="Todo-Buddy Application" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="p-6">
-              <h3 className="text-lg font-semibold">Todo-Buddy</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                A comprehensive task management application with drag-and-drop functionality, categories, priorities, and deadline notifications to boost productivity. Built with Supabase for authentication and data storage.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-muted-foreground">
-                  React
-                </span>
-                <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-muted-foreground">
-                  TypeScript
-                </span>
-                <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-muted-foreground">
-                  TailwindCSS
-                </span>
-                <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-muted-foreground">
-                  Supabase
-                </span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {featuredProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              whileHover={{ y: -10 }}
+              className="group rounded-lg overflow-hidden border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300"
+            >
+              <div className="aspect-video w-full overflow-hidden bg-muted flex items-center justify-center">
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
-              <div className="mt-4 flex items-center justify-between">
-                <Link
-                  to="/projects"
-                  className="text-sm font-medium text-primary hover:underline"
-                >
-                  View Details
-                </Link>
-                <div className="flex items-center gap-2">
-                  <a
-                    href="https://github.com/Suleman25/lovable-todo-buddy"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-full p-1 text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="GitHub"
+              <div className="p-6">
+                <h3 className="text-lg font-semibold">{project.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {project.description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span 
+                      key={tag} 
+                      className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-muted-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-4 flex items-center justify-between">
+                  <Link
+                    to="/projects"
+                    className="text-sm font-medium text-primary hover:underline"
                   >
-                    <Github className="h-4 w-4" />
-                  </a>
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-full p-1 text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Live Demo"
-                  >
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
+                    View Details
+                  </Link>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full p-1 text-muted-foreground hover:text-foreground transition-colors"
+                      aria-label="GitHub"
+                    >
+                      <Github className="h-4 w-4" />
+                    </a>
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full p-1 text-muted-foreground hover:text-foreground transition-colors"
+                      aria-label="Live Demo"
+                    >
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
