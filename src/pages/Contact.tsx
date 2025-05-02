@@ -156,7 +156,7 @@ export default function Contact() {
                   </motion.div>
                   <motion.div variants={textAnimation}>
                     <h3 className="font-medium">Email</h3>
-                    <p className="text-muted-foreground">hello@example.com</p>
+                    <p className="text-muted-foreground">sulemanjamil177@gmail.com</p>
                   </motion.div>
                 </motion.div>
 
@@ -175,7 +175,7 @@ export default function Contact() {
                   </motion.div>
                   <motion.div variants={textAnimation}>
                     <h3 className="font-medium">Phone</h3>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                    <p className="text-muted-foreground">+92 3211431470</p>
                   </motion.div>
                 </motion.div>
 
@@ -195,7 +195,7 @@ export default function Contact() {
                   <motion.div variants={textAnimation}>
                     <h3 className="font-medium">Location</h3>
                     <p className="text-muted-foreground">
-                      San Francisco, California
+                      Lahore, Pakistan
                     </p>
                   </motion.div>
                 </motion.div>
