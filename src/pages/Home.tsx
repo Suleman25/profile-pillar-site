@@ -1,5 +1,6 @@
+
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Instagram } from "lucide-react";
+import { ArrowRight, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -41,10 +42,10 @@ const logoVariants = {
     }
   },
   hover: { 
-    scale: 1.2,
-    filter: "drop-shadow(0 0 8px rgba(255,255,255,0.7))",
+    scale: 1.1,
+    filter: "drop-shadow(0 0 6px rgba(255,255,255,0.5))",
     transition: { 
-      duration: 0.4,
+      duration: 0.3,
       ease: "easeInOut"
     }
   }
@@ -79,7 +80,7 @@ export default function Home() {
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                   <span className="block">Hi, I'm</span>
                   <motion.span 
-                    className="block mt-2 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
+                    className="block mt-2 gradient-text-primary"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
@@ -151,7 +152,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-2xl md:text-3xl font-bold text-center mb-12 gradient-text-primary"
+            className="text-2xl md:text-3xl font-bold text-center mb-12 gradient-text-secondary"
           >
             My Tech Stack
           </motion.h2>
@@ -169,17 +170,17 @@ export default function Home() {
                 className="flex flex-col items-center justify-center gap-3"
               >
                 <motion.div
-                  className="w-16 h-16 flex items-center justify-center overflow-hidden rounded-lg"
+                  className="w-14 h-14 flex items-center justify-center overflow-hidden rounded-lg"
                   whileHover={{ 
-                    y: -5,
-                    boxShadow: `0 0 10px 2px ${tech.color}80`
+                    y: -3,
+                    boxShadow: `0 0 8px 1px ${tech.color}70`
                   }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <img 
                     src={tech.icon} 
                     alt={tech.name} 
-                    className="w-full h-full transition-all"
+                    className="w-full h-full"
                   />
                 </motion.div>
                 <motion.span 
@@ -207,7 +208,9 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="flex justify-between items-center mb-12"
           >
-            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Featured Projects</h2>
+            <h2 className="text-2xl md:text-3xl font-bold gradient-text-primary">
+              Featured Projects
+            </h2>
             <Button asChild variant="outline">
               <Link to="/projects">
                 View All
@@ -297,7 +300,7 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="flex flex-col items-center text-center max-w-3xl mx-auto"
           >
-            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-3xl font-bold gradient-text-secondary">
               Let's Work Together
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
