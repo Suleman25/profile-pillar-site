@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { ArrowRight, Github, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -42,11 +41,10 @@ const logoVariants = {
     }
   },
   hover: { 
-    scale: 1.3,
-    rotate: [0, 5, -5, 0],
-    filter: "drop-shadow(0 0 12px rgba(255,255,255,0.8))",
+    scale: 1.2,
+    filter: "drop-shadow(0 0 8px rgba(255,255,255,0.7))",
     transition: { 
-      duration: 0.6,
+      duration: 0.4,
       ease: "easeInOut"
     }
   }
@@ -158,7 +156,7 @@ export default function Home() {
             My Tech Stack
           </motion.h2>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-6 justify-items-center">
             {techStack.map((tech, index) => (
               <motion.div
                 key={tech.name}
@@ -168,26 +166,24 @@ export default function Home() {
                 viewport={{ once: true }}
                 variants={logoVariants}
                 custom={index}
-                className="flex flex-col items-center justify-center p-4 rounded-lg transition-all"
+                className="flex flex-col items-center justify-center gap-3"
               >
                 <motion.div
-                  className="h-24 w-24 mb-3 flex items-center justify-center rounded-xl p-2"
-                  style={{ background: '#111111' }}
+                  className="w-16 h-16 flex items-center justify-center overflow-hidden rounded-lg"
                   whileHover={{ 
-                    y: -8,
-                    boxShadow: `0 0 20px 2px ${tech.color}40`
+                    y: -5,
+                    boxShadow: `0 0 10px 2px ${tech.color}80`
                   }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <img 
                     src={tech.icon} 
                     alt={tech.name} 
-                    className="h-16 w-16 transition-all duration-300"
-                    style={{ filter: "drop-shadow(0 0 2px " + tech.color + ")" }}
+                    className="w-full h-full transition-all"
                   />
                 </motion.div>
                 <motion.span 
-                  className="text-sm font-medium"
+                  className="text-xs font-medium text-muted-foreground"
                   whileHover={{ 
                     scale: 1.1,
                     color: tech.color
