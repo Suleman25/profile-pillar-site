@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import { useState } from "react";
->>>>>>> 1df9d2cea9d1690283023ae67967263bdd2321d8
 import { motion } from "framer-motion";
 import { Loader2, Mail, MapPin, Phone, Send, Github, Linkedin, Instagram } from "lucide-react"; // Added Send, Loader2, social icons
 import { Button } from "@/components/ui/button";
@@ -75,34 +72,33 @@ const textAnimation = {
   }
 };
 
+interface ContactItem {
+  icon: React.ReactNode;
+  title: string;
+  value: string;
+  href: string;
+}
 
 // --- Data with Lucide Components ---
-const contactInfo = [
-<<<<<<< HEAD
+const contactInfo: ContactItem[] = [
   {
-    icon: <Mail className="h-5 w-5" />,
+    icon: <Mail className="h-5 w-5 text-primary" />,
     title: "Email",
     value: "sulemanjamil177@gmail.com",
-    link: "mailto:sulemanjamil177@gmail.com"
+    href: "mailto:sulemanjamil177@gmail.com"
   },
   {
-    icon: <Phone className="h-5 w-5" />,
+    icon: <Phone className="h-5 w-5 text-primary" />,
     title: "Phone",
-    value: "+92 3211431470",
-    link: "tel:+923211431470"
+    value: "+92 321 1431470",
+    href: "tel:+923211431470"
   },
   {
-    icon: <MapPin className="h-5 w-5" />,
+    icon: <MapPin className="h-5 w-5 text-primary" />,
     title: "Location",
     value: "Lahore, Pakistan",
-    link: "https://maps.google.com/?q=Lahore,Pakistan"
+    href: "https://maps.google.com/?q=Lahore,Pakistan"
   }
-=======
-  { icon: Mail, title: "Email", value: "sulemanjamil177@gmail.com", href: "mailto:sulemanjamil177@gmail.com" },
-  // Use your actual phone number or keep placeholder if preferred
-  { icon: Phone, title: "Phone", value: "+92 321 1431470", href: "tel:+923211431470" },
-  { icon: MapPin, title: "Location", value: "Lahore, Pakistan", href: "https://maps.google.com/?q=Lahore,Pakistan" },
->>>>>>> 1df9d2cea9d1690283023ae67967263bdd2321d8
 ];
 
 const socialLinks = [
@@ -247,7 +243,7 @@ export function ContactSection() {
                           className="flex-shrink-0 h-10 w-10 flex items-center justify-center bg-primary/10 rounded-full"
                           variants={iconWrapperAnimation} initial="initial" animate="animate"
                         >
-                           <item.icon className="h-5 w-5 text-primary" />
+                          {item.icon}
                         </motion.div>
                         <motion.div variants={textAnimation} initial="initial" animate="animate">
                            <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.title}</p>
