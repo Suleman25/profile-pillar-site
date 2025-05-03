@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 const navItems = [
   { name: "Home", path: "/" },
   { name: "About", path: "/#about" },
-  { name: "Projects", path: "/projects" },
+  { name: "Projects", path: "/#projects" },  // Changed to anchor link instead of page
   { name: "Contact", path: "/#contact" },
 ];
 
@@ -71,19 +71,18 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     
     // Set active section based on current location
-    if (location.pathname === "/projects") {
-      setActiveSection("projects");
-    } else if (location.pathname === "/contact") {
-      setActiveSection("contact");
-    } else if (location.pathname === "/about") {
-      setActiveSection("about");
-    } else if (location.pathname === "/") {
+    if (location.pathname === "/") {
       // Check for hash on homepage
       const hash = location.hash.replace('#', '');
       if (hash) {
         setActiveSection(hash);
       } else {
         setActiveSection("");
+      }
+    } else {
+      // For other pages, still highlight the tab if we're on the projects page
+      if (location.pathname === "/projects") {
+        setActiveSection("projects");
       }
     }
     
@@ -99,12 +98,6 @@ export function Header() {
     // Always prevent default for proper handling
     e.preventDefault();
     
-    // Handle direct page links
-    if (path === "/projects") {
-      window.location.href = path;
-      return;
-    }
-    
     // If it's a hash link on the homepage
     if (path.startsWith('/#')) {
       const targetId = path.replace('/#', '');
@@ -118,7 +111,9 @@ export function Header() {
         setActiveSection(targetId);
       } else {
         // If we're not on the homepage, navigate there first
-        window.location.href = path;
+        if (location.pathname !== "/") {
+          window.location.href = path;
+        }
       }
     } else {
       // Handle regular navigation
@@ -129,8 +124,8 @@ export function Header() {
   // Determine if a nav item is active
   const isActive = (path: string) => {
     if (path === "/") return activeSection === "" && location.pathname === "/";
-    if (path === "/projects") return location.pathname === "/projects";
     if (path === "/#about") return activeSection === "about";
+    if (path === "/#projects") return activeSection === "projects";
     if (path === "/#contact") return activeSection === "contact";
     return false;
   };
