@@ -5,50 +5,37 @@ import { Progress } from "@/components/ui/progress";
 
 const skills = [
   { name: "React", level: 90 },
-  { name: "TypeScript", level: 85 },
+  { name: "JavaScript", level: 85 },
   { name: "Node.js", level: 80 },
   { name: "CSS/Tailwind", level: 95 },
+  { name: "SQL/PostgreSQL", level: 82 },
   { name: "UX/UI Design", level: 75 },
 ];
 
 const experiences = [
   {
     company: "Tech Solutions Inc.",
-    position: "Senior Frontend Developer",
-    period: "2022 - Present",
+    position: "Junior Frontend Developer",
+    period: "2023 - Present",
     description:
-      "Led frontend development for enterprise web applications. Implemented modern React patterns and optimized performance, resulting in 40% faster load times.",
+      "Leading frontend development for enterprise web applications. Implementing modern React patterns and optimizing performance, resulting in 40% faster load times.",
   },
   {
     company: "Digital Innovations",
-    position: "Frontend Developer",
-    period: "2019 - 2022",
+    position: "Web Development Intern",
+    period: "2022 - 2023",
     description:
       "Built responsive interfaces and collaborated with UX designers to implement user-centric features that increased user engagement by 25%.",
-  },
-  {
-    company: "Creative Web Agency",
-    position: "Web Developer Intern",
-    period: "2018 - 2019",
-    description:
-      "Assisted in developing marketing websites for clients using React and worked on improving accessibility standards.",
   },
 ];
 
 const education = [
   {
-    institution: "University of Technology",
-    degree: "Master's in Computer Science",
-    period: "2017 - 2019",
+    institution: "University of Lahore",
+    degree: "Bachelor's in Information Engineering Technology",
+    period: "2022 - 2026",
     description:
-      "Focused on Human-Computer Interaction and Advanced Web Technologies. Graduated with honors.",
-  },
-  {
-    institution: "State University",
-    degree: "Bachelor's in Software Engineering",
-    period: "2013 - 2017",
-    description:
-      "Core curriculum included data structures, algorithms, and software development methodologies.",
+      "Focusing on software development, database systems, and web technologies.",
   },
 ];
 
@@ -97,9 +84,8 @@ export default function About() {
               About Me
             </h1>
             <p className="mt-6 text-xl text-muted-foreground">
-              I'm a passionate frontend developer with over 5 years of
-              experience crafting beautiful and functional user interfaces. I
-              specialize in React, TypeScript, and modern web technologies.
+              I'm a passionate frontend developer with experience crafting beautiful and functional user interfaces. I
+              specialize in React, JavaScript, and modern web technologies.
             </p>
           </motion.div>
         </div>
@@ -218,7 +204,7 @@ export default function About() {
               Education
             </h2>
             <p className="mt-4 text-muted-foreground">
-              My academic background and certifications.
+              My academic background and qualifications.
             </p>
           </motion.div>
 
