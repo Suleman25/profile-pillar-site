@@ -42,22 +42,32 @@ const skills = [
   {
     id: 1,
     name: "Frontend Development",
-    description: "Building responsive and interactive user interfaces using React, JavaScript, and modern CSS frameworks."
+    description: "Building responsive and interactive user interfaces using React, JavaScript, and modern CSS frameworks like Tailwind CSS. Experienced in creating engaging UI components and animations with Framer Motion."
   },
   {
     id: 2,
     name: "Backend Development",
-    description: "Creating robust server-side applications with Node.js, Express, and working with REST APIs."
+    description: "Creating robust server-side applications with Node.js, Express, and working with REST APIs. Implementing authentication systems, data validation, and efficient database queries."
   },
   {
     id: 3,
     name: "Database Management",
-    description: "Designing database schemas and writing efficient queries using SQL, PostgreSQL, and MongoDB."
+    description: "Designing database schemas and writing efficient queries using SQL, PostgreSQL, and MongoDB. Experience with data normalization, indexing strategies, and query optimization for improved performance."
   },
   {
     id: 4,
     name: "Social Media Marketing",
-    description: "Developing and implementing social media strategies to increase brand awareness and engagement."
+    description: "Developing and implementing social media strategies to increase brand awareness and engagement. Creating content calendars, analyzing metrics, and optimizing campaigns based on audience insights."
+  },
+  {
+    id: 5,
+    name: "UI/UX Design",
+    description: "Creating user-centered designs that balance aesthetics with functionality. Skilled in wireframing, prototyping, and implementing responsive designs that provide excellent user experiences across devices."
+  },
+  {
+    id: 6,
+    name: "DevOps Practices",
+    description: "Setting up CI/CD pipelines, container deployment with Docker, and managing cloud infrastructure on platforms like AWS and Vercel. Experience with automated testing and monitoring systems."
   }
 ];
 
