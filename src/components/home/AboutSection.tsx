@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 // Animation variants
 const containerVariants = {
@@ -69,6 +70,33 @@ const skills = [
     name: "DevOps Practices",
     description: "Setting up CI/CD pipelines, container deployment with Docker, and managing cloud infrastructure on platforms like AWS and Vercel. Experience with automated testing and monitoring systems."
   }
+];
+
+const experiences = [
+  {
+    company: "Tech Solutions Inc.",
+    position: "Junior Frontend Developer",
+    period: "2023 - Present",
+    description:
+      "Leading frontend development for enterprise web applications. Implementing modern React patterns and optimizing performance, resulting in 40% faster load times.",
+  },
+  {
+    company: "Digital Innovations",
+    position: "Web Development Intern",
+    period: "2022 - 2023",
+    description:
+      "Built responsive interfaces and collaborated with UX designers to implement user-centric features that increased user engagement by 25%.",
+  },
+];
+
+const education = [
+  {
+    institution: "University of Lahore",
+    degree: "Bachelor's in Information Engineering Technology",
+    period: "2022 - 2026",
+    description:
+      "Focusing on software development, database systems, and web technologies.",
+  },
 ];
 
 export function AboutSection() {
@@ -169,6 +197,94 @@ export function AboutSection() {
               ))}
             </div>
           </motion.div>
+        </motion.div>
+
+        {/* Experience Section */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="mt-16"
+        >
+          <motion.h2 
+            variants={fadeIn}
+            className="text-2xl md:text-3xl font-bold gradient-text-primary text-center mb-10"
+          >
+            Work Experience
+          </motion.h2>
+          
+          <div className="grid grid-cols-1 gap-6 max-w-5xl mx-auto">
+            {experiences.map((exp, index) => (
+              <motion.div 
+                key={exp.company} 
+                variants={itemVariants}
+                custom={index}
+                whileHover={{ scale: 1.02 }}
+              >
+                <Card className="glass-card overflow-hidden">
+                  <CardHeader>
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
+                      <CardTitle className="text-primary">{exp.position}</CardTitle>
+                      <span className="text-sm font-medium text-muted-foreground">
+                        {exp.period}
+                      </span>
+                    </div>
+                    <CardDescription className="font-medium text-lg">
+                      {exp.company}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{exp.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Education Section */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="mt-16"
+        >
+          <motion.h2 
+            variants={fadeIn}
+            className="text-2xl md:text-3xl font-bold gradient-text-primary text-center mb-10"
+          >
+            Education
+          </motion.h2>
+          
+          <div className="grid grid-cols-1 gap-6 max-w-5xl mx-auto">
+            {education.map((edu, index) => (
+              <motion.div 
+                key={edu.degree} 
+                variants={itemVariants}
+                custom={index}
+                whileHover={{ scale: 1.02 }}
+              >
+                <Card className="glass-card overflow-hidden">
+                  <CardHeader>
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
+                      <CardTitle className="text-primary">{edu.degree}</CardTitle>
+                      <span className="text-sm font-medium text-muted-foreground">
+                        {edu.period}
+                      </span>
+                    </div>
+                    <CardDescription className="font-medium text-lg">
+                      {edu.institution}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{edu.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
