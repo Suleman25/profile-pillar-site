@@ -1,6 +1,7 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const skills = [
   { 
@@ -91,6 +92,24 @@ const itemVariants = {
   },
 };
 
+// Text animation variants
+const textRevealVariants = {
+  hidden: { opacity: 0 },
+  visible: (i: number) => ({
+    opacity: 1,
+    transition: { delay: 0.05 * i, duration: 0.5 }
+  })
+};
+
+const paragraphVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.3 * i, duration: 0.7, ease: "easeOut" }
+  })
+};
+
 export default function About() {
   return (
     <div className="flex-1 pb-20">
@@ -101,15 +120,76 @@ export default function About() {
             initial="hidden"
             animate="visible"
             variants={sectionVariants}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-4xl mx-auto"
           >
-            <h1 className="text-3xl md:text-5xl font-bold gradient-text-primary">
-              About Me
-            </h1>
-            <p className="mt-6 text-xl text-muted-foreground">
-              I'm a passionate frontend developer with experience crafting beautiful and functional user interfaces. I
-              specialize in React, JavaScript, and modern web technologies.
-            </p>
+            <div className="text-center mb-14">
+              <h1 className="text-3xl md:text-5xl font-bold gradient-text-primary mb-8">
+                About Me
+              </h1>
+            </div>
+
+            {/* Enhanced About Me Content */}
+            <div className="glass-card rounded-xl p-8 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 z-0"></div>
+              <div className="relative z-10">
+                <motion.p 
+                  custom={0}
+                  variants={paragraphVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="text-lg leading-relaxed mb-5"
+                >
+                  I'm a passionate full-stack developer with a strong foundation in both front-end and back-end technologies. My journey in software development began with a curiosity about how digital experiences are crafted, which led me to dive deep into the world of web development.
+                </motion.p>
+                
+                <motion.p 
+                  custom={1}
+                  variants={paragraphVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="text-lg leading-relaxed mb-5"
+                >
+                  With expertise in <span className="text-primary font-medium">React</span>, <span className="text-primary font-medium">JavaScript</span>, and <span className="text-secondary font-medium">Node.js</span>, I build responsive and intuitive user interfaces that deliver exceptional user experiences. My background in database management with <span className="text-primary font-medium">SQL</span> and <span className="text-secondary font-medium">PostgreSQL</span> allows me to design efficient data structures that power robust applications.
+                </motion.p>
+                
+                <motion.p 
+                  custom={2}
+                  variants={paragraphVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="text-lg leading-relaxed mb-5"
+                >
+                  I'm currently pursuing my Bachelor's degree in Information Engineering Technology at the University of Lahore, where I'm expanding my knowledge in software architecture, system design, and emerging technologies. Beyond technical skills, I value clean code, thoughtful architecture, and collaborative development processes.
+                </motion.p>
+                
+                <motion.p 
+                  custom={3}
+                  variants={paragraphVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="text-lg leading-relaxed"
+                >
+                  When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing my knowledge through tech communities. I believe in continuous learning and pushing the boundaries of what's possible with code.
+                </motion.p>
+                
+                <div className="mt-8 border-t border-white/10 pt-6">
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="approach" className="border-white/10">
+                      <AccordionTrigger className="text-primary hover:text-primary font-medium">My Approach to Development</AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground">
+                        I approach each project with a focus on user experience, performance, and maintainability. By combining technical expertise with creative problem-solving, I develop solutions that not only meet but exceed expectations. I believe in writing clean, well-documented code and embracing modern development practices.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="philosophy" className="border-white/10">
+                      <AccordionTrigger className="text-primary hover:text-primary font-medium">My Learning Philosophy</AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground">
+                        The tech landscape is ever-evolving, and I'm committed to growing with it. I dedicate time each week to learning new technologies, refining my skills, and staying updated with industry best practices. This continuous learning mindset enables me to bring innovative solutions to every challenge.
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
