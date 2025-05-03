@@ -1,4 +1,5 @@
 
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
@@ -127,12 +128,12 @@
   }
 
   .glass-card {
-    @apply bg-muted/30 backdrop-blur-md border border-white/5 shadow-lg dark:border-white/5 light:border-black/5;
+    @apply bg-muted/30 backdrop-blur-md border border-white/5 shadow-lg dark:border-white/5;
   }
 
   .skill-card {
     @apply relative overflow-hidden rounded-lg p-6 bg-muted/30 backdrop-blur-sm border border-white/5
-    hover:border-primary/20 transition-all duration-300 dark:border-white/5 light:border-black/10;
+    hover:border-primary/20 transition-all duration-300 dark:border-white/5;
   }
 
   .skill-card::before {
@@ -145,3 +146,4 @@
     @apply opacity-100;
   }
 }
+
