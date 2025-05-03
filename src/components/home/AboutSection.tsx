@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { useState } from "react";
@@ -291,7 +290,7 @@ export function AboutSection() {
           <div className="flex flex-col items-center mb-10">
             <motion.h2 
               variants={fadeIn}
-              className="text-2xl md:text-3xl font-bold gradient-text-primary text-center"
+              className="text-2xl md:text-3xl font-bold gradient-text text-center"
             >
               Education
             </motion.h2>

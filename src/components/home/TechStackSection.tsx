@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -104,7 +103,7 @@ export function TechStackSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-2xl md:text-3xl font-bold text-center gradient-text-primary"
+            className="text-2xl md:text-3xl font-bold text-center gradient-text"
           >
             My Tech Stack
           </motion.h2>

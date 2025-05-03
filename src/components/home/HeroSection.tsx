@@ -1,4 +1,3 @@
-
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -67,23 +66,28 @@ export function HeroSection() {
   }, []);
 
   const handleDownloadResume = () => {
-    // Create a link element
-    const link = document.createElement("a");
-    
-    // Set the link's href to the resume PDF file
-    link.href = "/resume.pdf";
-    
-    // Set download attribute to suggest a filename when downloaded
-    link.download = "muhammad_suleman_resume.pdf";
-    
-    // Append to the document
-    document.body.appendChild(link);
-    
-    // Trigger the click event to start the download
-    link.click();
-    
-    // Clean up
-    document.body.removeChild(link);
+    try {
+      // Create a link element
+      const link = document.createElement("a");
+      
+      // Set the link's href to the resume file
+      link.href = "/CV[1].docx";
+      
+      // Set download attribute to suggest a filename when downloaded
+      link.download = "Muhammad_Suleman_CV.docx";
+      
+      // Append to the document
+      document.body.appendChild(link);
+      
+      // Trigger the click event to start the download
+      link.click();
+      
+      // Clean up
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error downloading resume:", error);
+      alert("Sorry, there was an error downloading the resume. Please try again later.");
+    }
   };
 
   return (
@@ -98,9 +102,9 @@ export function HeroSection() {
           >
             <motion.div variants={fadeInUp}>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-                <span className="block">Hi, I'm</span>
+                <span className="block gradient-text">Hi, I'm</span>
                 <motion.span 
-                  className="block mt-2 gradient-text-primary"
+                  className="block mt-2 gradient-text-secondary"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6, duration: 0.8 }}

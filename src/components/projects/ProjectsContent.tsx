@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Github, ListTodo, Code, BarChart3, Layers } from "lucide-react";
@@ -111,7 +110,7 @@ export function ProjectsContent({ isHomePage = false }: ProjectsContentProps) {
               transition={{ duration: 0.6 }}
               className="flex flex-col items-center mb-12"
             >
-              <h2 className="text-2xl md:text-3xl font-bold gradient-text-primary text-center">
+              <h2 className="text-2xl md:text-3xl font-bold gradient-text text-center">
                 Featured Projects
               </h2>
               <motion.div 

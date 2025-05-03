@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,7 +14,7 @@ export function FeaturedProjectsSection() {
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center mb-12"
         >
-          <h2 className="text-2xl md:text-3xl font-bold gradient-text-primary text-center">
+          <h2 className="text-2xl md:text-3xl font-bold gradient-text text-center">
             Featured Projects
           </h2>
           <motion.div 

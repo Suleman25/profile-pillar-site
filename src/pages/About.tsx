@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -123,7 +122,7 @@ export default function About() {
             className="max-w-4xl mx-auto"
           >
             <div className="text-center mb-14">
-              <h1 className="text-3xl md:text-5xl font-bold gradient-text-primary mb-8">
+              <h1 className="text-3xl md:text-5xl font-bold gradient-text mb-8">
                 About Me
               </h1>
             </div>
@@ -250,7 +249,7 @@ export default function About() {
             variants={sectionVariants}
             className="mb-12 text-center"
           >
-            <h2 className="text-2xl md:text-3xl font-bold gradient-text-primary">
+            <h2 className="text-2xl md:text-3xl font-bold gradient-text">
               Work Experience
             </h2>
             <p className="mt-4 text-muted-foreground">
@@ -304,7 +303,7 @@ export default function About() {
             variants={sectionVariants}
             className="mb-12 text-center"
           >
-            <h2 className="text-2xl md:text-3xl font-bold gradient-text-primary">
+            <h2 className="text-2xl md:text-3xl font-bold gradient-text">
               Education
             </h2>
             <p className="mt-4 text-muted-foreground">
