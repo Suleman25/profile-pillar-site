@@ -82,7 +82,7 @@ export function HeroSection() {
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 <span className="block">Hi, I'm</span>
                 <motion.span 
-                  className="block mt-2 gradient-text-primary"
+                  className="block mt-2 text-primary"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6, duration: 0.8 }}
@@ -95,7 +95,7 @@ export function HeroSection() {
                 <AnimatePresence mode="wait">
                   <motion.p 
                     key={currentTitleIndex}
-                    className="text-xl sm:text-2xl font-heading text-primary"
+                    className="text-xl sm:text-2xl font-heading text-muted-foreground"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
@@ -157,20 +157,14 @@ export function HeroSection() {
             className="flex justify-center"
           >
             <motion.div 
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.4 }}
-              className="relative rounded-full overflow-hidden border-4 border-primary/20 shadow-xl w-64 h-64 md:w-80 md:h-80"
+              className="relative rounded-full overflow-hidden border-2 border-border shadow-lg w-64 h-64 md:w-80 md:h-80"
             >
               <img 
                 src="/lovable-uploads/cdd634d0-9844-4f05-88b1-6c2d27daec5f.png"
                 alt="Muhammad Suleman"
                 className="w-full h-full object-cover"
-              />
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 1 }}
               />
             </motion.div>
           </motion.div>

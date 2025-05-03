@@ -16,7 +16,6 @@ const logoVariants = {
   },
   hover: { 
     scale: 1.1,
-    filter: "drop-shadow(0 0 6px rgba(255,255,255,0.5))",
     transition: { 
       duration: 0.3,
       ease: "easeInOut"
@@ -92,7 +91,7 @@ export function TechStackSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-2xl md:text-3xl font-bold text-center gradient-text-secondary"
+            className="text-2xl md:text-3xl font-bold text-center text-foreground"
           >
             My Tech Stack
           </motion.h2>
@@ -101,7 +100,7 @@ export function TechStackSection() {
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-3 h-1 w-32 bg-gradient-to-r from-primary via-accent to-secondary rounded-full"
+            className="mt-3 h-1 w-24 bg-primary rounded-full"
           />
         </div>
         
@@ -121,7 +120,7 @@ export function TechStackSection() {
                 className="w-14 h-14 flex items-center justify-center overflow-hidden rounded-lg cursor-pointer"
                 whileHover={{ 
                   y: -3,
-                  boxShadow: `0 0 8px 1px ${tech.color}70`
+                  boxShadow: `0 0 8px 1px rgba(0,0,0,0.1)`
                 }}
                 onClick={() => toggleDescription(tech.name)}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -135,10 +134,7 @@ export function TechStackSection() {
               <div className="flex items-center gap-1">
                 <motion.span 
                   className="text-xs font-medium text-muted-foreground cursor-pointer"
-                  whileHover={{ 
-                    scale: 1.1,
-                    color: tech.color
-                  }}
+                  whileHover={{ scale: 1.1 }}
                   onClick={() => toggleDescription(tech.name)}
                 >
                   {tech.name}
