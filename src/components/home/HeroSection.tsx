@@ -3,6 +3,7 @@ import { ArrowRight, Download, Send } from "lucide-react"; // Added Send icon
 import { Link } from "react-router-dom"; // Assuming you might use this for contact
 import { Button } from "@/components/ui/button"; // Keep using your Button component
 import { useState, useEffect } from "react";
+import { ShinyButton } from "@/components/ui/shiny-button";
 
 // Refined Animation Variants
 const fadeInUp = {
@@ -149,28 +150,22 @@ export function HeroSection() {
               custom={2}
               className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 mt-6" // Responsive button layout
             >
-               {/* Primary CTA - Example: Contact or Projects */}
+              {/* Primary CTA with ShinyButton */}
               <Link to="/contact" className="w-full sm:w-auto"> {/* Link example */}
-                <Button
-                    size="lg"
-                    className="w-full sm:w-auto button-glow-effect icon-lift-rotate group" // Added effects
-                    variant="default" // Assuming default is your primary style
-                >
-                    Get in Touch
-                    <Send className="ml-2 h-4 w-4 transition-transform duration-300 ease-out" />
-                </Button>
+                <ShinyButton className="w-full sm:w-auto flex items-center justify-center">
+                  Get in Touch
+                  <Send className="ml-2 h-4 w-4 transition-transform duration-300 ease-out" />
+                </ShinyButton>
               </Link>
 
-              {/* Secondary CTA - Resume */}
-              <Button
+              {/* Secondary CTA with ShinyButton */}
+              <ShinyButton 
                 onClick={handleDownloadResume}
-                variant="secondary" // Use standard secondary variant
-                size="lg"
-                className="w-full sm:w-auto button-glow-effect icon-lift-rotate group" // Added effects
+                className="w-full sm:w-auto flex items-center justify-center"
               >
                 <span>My Resume</span>
                 <Download className="ml-2 h-4 w-4 transition-transform duration-300 ease-out" />
-              </Button>
+              </ShinyButton>
             </motion.div>
           </motion.div>
 
@@ -182,17 +177,17 @@ export function HeroSection() {
             variants={imageVariants}
             className="flex justify-center items-center relative group" // Group for potential child hover effects
           >
-             {/* Apply animated border here */}
+            {/* Apply animated border here */}
             <div className="relative rounded-3xl p-1.5 animated-gradient-border image-border"> {/* Added padding for border, new border class */}
-               <div className="rounded-[calc(1.5rem-6px)] overflow-hidden shadow-xl w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96"> {/* Slightly larger on lg, inner rounding */}
-                   {/* Optional: Inner subtle gradient overlay */}
-                   <div className="absolute inset-0 bg-gradient-to-br from-black/0 via-black/0 to-black/10 opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-10"></div>
-                   <img
-                     src="/lovable-uploads/cdd634d0-9844-4f05-88b1-6c2d27daec5f.png"
-                     alt="Muhammad Suleman - Professional Portrait" // More descriptive alt text
-                     className="w-full h-full object-cover relative z-0 transform scale-105 group-hover:scale-100 transition-transform duration-700 ease-out" // Subtle zoom out on hover
-                   />
-               </div>
+              <div className="rounded-[calc(1.5rem-6px)] overflow-hidden shadow-xl w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96"> {/* Slightly larger on lg, inner rounding */}
+                {/* Optional: Inner subtle gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-black/0 via-black/0 to-black/10 opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-10"></div>
+                <img
+                  src="/lovable-uploads/cdd634d0-9844-4f05-88b1-6c2d27daec5f.png"
+                  alt="Muhammad Suleman - Professional Portrait" // More descriptive alt text
+                  className="w-full h-full object-cover relative z-0 transform scale-105 group-hover:scale-100 transition-transform duration-700 ease-out" // Subtle zoom out on hover
+                />
+              </div>
             </div>
           </motion.div>
         </div>
