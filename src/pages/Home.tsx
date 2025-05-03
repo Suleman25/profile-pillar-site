@@ -6,10 +6,11 @@ import { CTASection } from "@/components/home/CTASection";
 import { AboutSection } from "@/components/home/AboutSection";
 import { ContactSection } from "@/components/home/ContactSection";
 import { ProjectsContent } from "@/components/projects/ProjectsContent";
-
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
 export default function Home() {
   return (
     <div className="flex-1">
+      <SmoothCursor />
       <HeroSection />
       <AboutSection />
       <TechStackSection />
