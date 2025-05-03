@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -35,8 +34,8 @@ const contactInfo = [
   {
     icon: <Phone className="h-5 w-5" />,
     title: "Phone",
-    value: "+92 123 456 7890",
-    link: "tel:+921234567890"
+    value: "+92 3211431470",
+    link: "tel:+923211431470"
   },
   {
     icon: <MapPin className="h-5 w-5" />,
