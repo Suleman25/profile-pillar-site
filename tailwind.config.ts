@@ -55,8 +55,8 @@ export default {
 				},
 			},
 			fontFamily: {
-				sans: ['Poppins', 'sans-serif'],
-				heading: ['Raleway', 'sans-serif'],
+				sans: ['Montserrat', 'sans-serif'],
+				heading: ['Josefin Sans', 'sans-serif'],
 				mono: ['JetBrains Mono', 'monospace'],
 			},
 			borderRadius: {

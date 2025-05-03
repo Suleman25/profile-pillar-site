@@ -74,11 +74,17 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <motion.div 
-            className="h-9 w-9 rounded-full bg-primary flex items-center justify-center"
-            whileHover={{ scale: 1.1 }}
+            className="h-9 w-auto px-2 rounded-full bg-gradient-to-r from-primary via-accent to-secondary flex items-center justify-center"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ 
+              scale: 1.1,
+              background: "linear-gradient(to right, hsl(var(--accent)), hsl(var(--primary)), hsl(var(--secondary)))"
+            }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="text-primary-foreground font-bold text-lg">MS</span>
+            <span className="text-primary-foreground font-bold text-lg whitespace-nowrap">M Suleman</span>
           </motion.div>
         </Link>
 
@@ -105,7 +111,7 @@ export function Header() {
                   {location.pathname === item.path && (
                     <motion.div
                       layoutId="nav-underline"
-                      className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"
+                      className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary via-accent to-secondary"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.3 }}
