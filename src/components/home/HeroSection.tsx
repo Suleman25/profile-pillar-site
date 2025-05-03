@@ -1,6 +1,6 @@
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
@@ -46,6 +46,27 @@ export function HeroSection() {
     
     return () => clearInterval(interval);
   }, []);
+
+  const handleDownloadResume = () => {
+    // Create a link element
+    const link = document.createElement("a");
+    
+    // Set the link's href to the resume PDF file
+    // Note: This assumes you have a resume.pdf file in your public folder
+    link.href = "/resume.pdf";
+    
+    // Set download attribute to suggest a filename when downloaded
+    link.download = "muhammad_suleman_resume.pdf";
+    
+    // Append to the document
+    document.body.appendChild(link);
+    
+    // Trigger the click event to start the download
+    link.click();
+    
+    // Clean up
+    document.body.removeChild(link);
+  };
 
   return (
     <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center">
@@ -104,13 +125,22 @@ export function HeroSection() {
               className="flex flex-wrap gap-4"
             >
               <Button asChild size="lg" className="group">
-                <Link to="/projects">
+                <Link to="#projects">
                   View Projects
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link to="/contact">Contact Me</Link>
+                <Link to="#contact">Contact Me</Link>
+              </Button>
+              <Button 
+                onClick={handleDownloadResume} 
+                variant="secondary" 
+                size="lg" 
+                className="group"
+              >
+                <span>Download Resume</span>
+                <Download className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
               </Button>
             </motion.div>
           </motion.div>
