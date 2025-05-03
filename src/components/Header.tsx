@@ -8,9 +8,9 @@ import { motion } from "framer-motion";
 
 const navItems = [
   { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Projects", path: "/projects" },
-  { name: "Contact", path: "/contact" },
+  { name: "About", path: "/#about" },
+  { name: "Projects", path: "/#projects" },
+  { name: "Contact", path: "/#contact" },
 ];
 
 const headerVariants = {
@@ -41,14 +41,31 @@ const navItemVariants = {
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const location = useLocation();
 
+  // Handle scroll events to determine active section
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setScrolled(true);
       } else {
         setScrolled(false);
+      }
+      
+      // Check which section is currently in view
+      const sections = ["about", "projects", "contact"];
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
+          } else if (window.scrollY < 300) {
+            setActiveSection("");
+          }
+        }
       }
     };
 
@@ -58,6 +75,34 @@ export function Header() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Smooth scroll to section
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    
+    // If it's a hash link
+    if (sectionId.startsWith('/#')) {
+      const targetId = sectionId.replace('/#', '');
+      const element = document.getElementById(targetId);
+      
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop - 80,
+          behavior: 'smooth'
+        });
+        setActiveSection(targetId);
+      }
+    } else {
+      // Handle regular navigation
+      window.location.href = sectionId;
+    }
+  };
+
+  // Determine if a nav item is active
+  const isActive = (path: string) => {
+    if (path === "/") return activeSection === "";
+    return path === `/#${activeSection}`;
   };
 
   return (
@@ -74,17 +119,14 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <motion.div 
-            className="h-9 w-auto px-2 rounded-full bg-gradient-to-r from-primary via-accent to-secondary flex items-center justify-center"
+            className="text-xl font-bold gradient-text-primary"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            whileHover={{ 
-              scale: 1.1,
-              background: "linear-gradient(to right, hsl(var(--accent)), hsl(var(--primary)), hsl(var(--secondary)))"
-            }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="text-primary-foreground font-bold text-lg whitespace-nowrap">M Suleman</span>
+            M Suleman
           </motion.div>
         </Link>
 
@@ -101,14 +143,15 @@ export function Header() {
               >
                 <Link
                   to={item.path}
+                  onClick={(e) => scrollToSection(e, item.path)}
                   className={`relative text-sm font-medium py-2 transition-colors ${
-                    location.pathname === item.path
+                    isActive(item.path)
                       ? "text-primary"
                       : "text-foreground hover:text-primary"
                   }`}
                 >
                   {item.name}
-                  {location.pathname === item.path && (
+                  {isActive(item.path) && (
                     <motion.div
                       layoutId="nav-underline"
                       className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary via-accent to-secondary"
@@ -153,9 +196,12 @@ export function Header() {
               >
                 <Link
                   to={item.path}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => {
+                    scrollToSection(e, item.path);
+                    setIsMenuOpen(false);
+                  }}
                   className={`block px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                    location.pathname === item.path
+                    isActive(item.path)
                       ? "bg-primary/10 text-primary"
                       : "hover:bg-accent/10 hover:text-accent"
                   }`}

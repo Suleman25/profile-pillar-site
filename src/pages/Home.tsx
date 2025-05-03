@@ -10,10 +10,18 @@ export default function Home() {
   return (
     <div className="flex-1">
       <HeroSection />
-      <AboutSection />
-      <TechStackSection />
-      <FeaturedProjectsSection />
-      <ContactSection />
+      <div id="about">
+        <AboutSection />
+      </div>
+      <div id="tech-stack">
+        <TechStackSection />
+      </div>
+      <div id="projects">
+        <FeaturedProjectsSection />
+      </div>
+      <div id="contact">
+        <ContactSection />
+      </div>
       <CTASection />
     </div>
   );
