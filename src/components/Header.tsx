@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 const navItems = [
   { name: "Home", path: "/" },
   { name: "About", path: "/#about" },
-  { name: "Projects", path: "/#projects" },
+  { name: "Projects", path: "/projects" }, // Updated to direct link to projects page
   { name: "Contact", path: "/#contact" },
 ];
 
@@ -44,7 +44,7 @@ export function Header() {
   const [activeSection, setActiveSection] = useState("");
   const location = useLocation();
 
-  // Handle scroll events to determine active section
+  // Handle scroll events to determine active section and update active nav
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -70,20 +70,44 @@ export function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
+    
+    // Set active section based on current location
+    if (location.pathname === "/projects") {
+      setActiveSection("projects");
+    } else if (location.pathname === "/contact") {
+      setActiveSection("contact");
+    } else if (location.pathname === "/about") {
+      setActiveSection("about");
+    } else if (location.pathname === "/") {
+      // Check for hash on homepage
+      const hash = location.hash.replace('#', '');
+      if (hash) {
+        setActiveSection(hash);
+      } else {
+        setActiveSection("");
+      }
+    }
+    
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [location]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Smooth scroll to section
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+  // Smooth scroll to section or navigate to page
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     e.preventDefault();
     
+    // Handle direct page links
+    if (path === "/projects" || path === "/about" || path === "/contact") {
+      window.location.href = path;
+      return;
+    }
+    
     // If it's a hash link
-    if (sectionId.startsWith('/#')) {
-      const targetId = sectionId.replace('/#', '');
+    if (path.startsWith('/#')) {
+      const targetId = path.replace('/#', '');
       const element = document.getElementById(targetId);
       
       if (element) {
@@ -95,13 +119,16 @@ export function Header() {
       }
     } else {
       // Handle regular navigation
-      window.location.href = sectionId;
+      window.location.href = path;
     }
   };
 
   // Determine if a nav item is active
   const isActive = (path: string) => {
     if (path === "/") return activeSection === "";
+    if (path === "/projects") return location.pathname === "/projects";
+    if (path === "/about") return location.pathname === "/about";
+    if (path === "/contact") return location.pathname === "/contact";
     return path === `/#${activeSection}`;
   };
 

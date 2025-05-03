@@ -31,42 +31,64 @@ export function FeaturedProjectsSection() {
   ];
 
   return (
-    <section className="section-padding">
+    <section id="projects" className="section-padding">
       <div className="container">
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex justify-between items-center mb-12"
+          className="flex flex-col items-center mb-12"
         >
-          <h2 className="text-2xl md:text-3xl font-bold gradient-text-primary">
+          <h2 className="text-2xl md:text-3xl font-bold gradient-text-primary text-center">
             Featured Projects
           </h2>
-          <Button asChild variant="outline">
-            <Link to="/projects">
-              View All
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+          <motion.div 
+            initial={{ scale: 0, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="section-heading-line"
+          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-6 flex justify-center"
+          >
+            <Button asChild variant="outline" className="hover-arrow">
+              <Link to="/projects">
+                View All Projects
+                <motion.span 
+                  className="custom-arrow"
+                  initial={{ x: 0 }}
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </motion.span>
+              </Link>
+            </Button>
+          </motion.div>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {featuredProjects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              whileHover={{ y: -10 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{ y: -10, transition: { duration: 0.3 } }}
               className="group rounded-lg overflow-hidden border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300"
             >
               <div className="aspect-video w-full overflow-hidden bg-muted flex items-center justify-center">
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="p-6">
@@ -78,25 +100,33 @@ export function FeaturedProjectsSection() {
                   {project.tags.map((tag) => (
                     <span 
                       key={tag} 
-                      className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-muted-foreground"
+                      className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-muted-foreground transition-colors duration-200 hover:bg-primary/10 hover:text-primary"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <div className="mt-4 flex items-center justify-between">
+                <div className="mt-6 flex items-center justify-between">
                   <Link
                     to="/projects"
-                    className="text-sm font-medium text-primary hover:underline"
+                    className="text-sm font-medium text-primary hover-arrow fancy-underline"
                   >
                     View Details
+                    <motion.span 
+                      className="custom-arrow"
+                      initial={{ x: 0 }}
+                      whileHover={{ x: 4 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ArrowRight className="ml-1 h-3 w-3 inline" />
+                    </motion.span>
                   </Link>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-3">
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full p-1 text-muted-foreground hover:text-foreground transition-colors"
+                      className="rounded-full p-1.5 text-muted-foreground hover:text-foreground transition-colors hover:bg-muted"
                       aria-label="GitHub"
                     >
                       <Github className="h-4 w-4" />
@@ -105,7 +135,7 @@ export function FeaturedProjectsSection() {
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full p-1 text-muted-foreground hover:text-foreground transition-colors"
+                      className="rounded-full p-1.5 text-muted-foreground hover:text-foreground transition-colors hover:bg-muted"
                       aria-label="Live Demo"
                     >
                       <ArrowRight className="h-4 w-4" />

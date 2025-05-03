@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -117,12 +117,20 @@ export function AboutSection() {
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
         >
           <motion.div variants={itemVariants} className="space-y-6">
-            <motion.h2 
-              variants={fadeIn} 
-              className="text-2xl md:text-3xl font-bold gradient-text-primary"
-            >
-              About Me
-            </motion.h2>
+            <div className="flex flex-col items-start">
+              <motion.h2 
+                variants={fadeIn} 
+                className="text-2xl md:text-3xl font-bold gradient-text-primary"
+              >
+                About Me
+              </motion.h2>
+              <motion.div 
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="h-1 w-16 bg-gradient-to-r from-primary via-accent to-secondary rounded-full mt-2"
+              />
+            </div>
             
             <motion.div 
               variants={fadeIn}
@@ -152,12 +160,20 @@ export function AboutSection() {
           </motion.div>
           
           <motion.div variants={itemVariants} className="space-y-6">
-            <motion.h3 
-              variants={fadeIn}
-              className="text-xl md:text-2xl font-bold gradient-text-secondary"
-            >
-              Technical Skills
-            </motion.h3>
+            <div className="flex flex-col items-start">
+              <motion.h3 
+                variants={fadeIn}
+                className="text-xl md:text-2xl font-bold gradient-text-secondary"
+              >
+                Technical Skills
+              </motion.h3>
+              <motion.div 
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="h-1 w-16 bg-gradient-to-r from-accent to-primary rounded-full mt-2"
+              />
+            </div>
             
             <div className="space-y-4">
               {skills.map((skill) => (
@@ -175,10 +191,11 @@ export function AboutSection() {
                   >
                     <h4 className="font-medium text-lg">{skill.name}</h4>
                     <motion.div
-                      animate={{ rotate: expandedSkill === skill.id ? 180 : 0 }}
+                      animate={{ rotate: expandedSkill === skill.id ? 90 : 0 }}
                       transition={{ duration: 0.3 }}
+                      className="text-primary"
                     >
-                      <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                      <ChevronRight className="h-5 w-5" />
                     </motion.div>
                   </div>
                   
@@ -188,7 +205,7 @@ export function AboutSection() {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="mt-2 text-sm text-muted-foreground"
+                      className="mt-3 text-sm text-muted-foreground px-4 py-3 border-l-2 border-primary/30 bg-primary/5 rounded-r-md"
                     >
                       {skill.description}
                     </motion.p>
@@ -207,12 +224,21 @@ export function AboutSection() {
           variants={containerVariants}
           className="mt-16"
         >
-          <motion.h2 
-            variants={fadeIn}
-            className="text-2xl md:text-3xl font-bold gradient-text-primary text-center mb-10"
-          >
-            Work Experience
-          </motion.h2>
+          <div className="flex flex-col items-center mb-10">
+            <motion.h2 
+              variants={fadeIn}
+              className="text-2xl md:text-3xl font-bold gradient-text-primary text-center"
+            >
+              Work Experience
+            </motion.h2>
+            <motion.div 
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="section-heading-line"
+            />
+          </div>
           
           <div className="grid grid-cols-1 gap-6 max-w-5xl mx-auto">
             {experiences.map((exp, index) => (
@@ -221,11 +247,22 @@ export function AboutSection() {
                 variants={itemVariants}
                 custom={index}
                 whileHover={{ scale: 1.02 }}
+                className="overflow-hidden"
               >
-                <Card className="glass-card overflow-hidden">
+                <Card className="glass-card hover:shadow-lg transition-all duration-300">
                   <CardHeader>
                     <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
-                      <CardTitle className="text-primary">{exp.position}</CardTitle>
+                      <CardTitle className="text-primary flex items-center">
+                        {exp.position}
+                        <motion.span 
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.3 + index * 0.1 }}
+                          className="ml-2"
+                        >
+                          <ChevronRight className="h-4 w-4 text-accent inline" />
+                        </motion.span>
+                      </CardTitle>
                       <span className="text-sm font-medium text-muted-foreground">
                         {exp.period}
                       </span>
@@ -251,12 +288,21 @@ export function AboutSection() {
           variants={containerVariants}
           className="mt-16"
         >
-          <motion.h2 
-            variants={fadeIn}
-            className="text-2xl md:text-3xl font-bold gradient-text-primary text-center mb-10"
-          >
-            Education
-          </motion.h2>
+          <div className="flex flex-col items-center mb-10">
+            <motion.h2 
+              variants={fadeIn}
+              className="text-2xl md:text-3xl font-bold gradient-text-primary text-center"
+            >
+              Education
+            </motion.h2>
+            <motion.div 
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="section-heading-line"
+            />
+          </div>
           
           <div className="grid grid-cols-1 gap-6 max-w-5xl mx-auto">
             {education.map((edu, index) => (
@@ -265,11 +311,22 @@ export function AboutSection() {
                 variants={itemVariants}
                 custom={index}
                 whileHover={{ scale: 1.02 }}
+                className="overflow-hidden"
               >
-                <Card className="glass-card overflow-hidden">
+                <Card className="glass-card hover:shadow-lg transition-all duration-300">
                   <CardHeader>
                     <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
-                      <CardTitle className="text-primary">{edu.degree}</CardTitle>
+                      <CardTitle className="text-primary flex items-center">
+                        {edu.degree}
+                        <motion.span 
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.3 + index * 0.1 }}
+                          className="ml-2"
+                        >
+                          <ChevronRight className="h-4 w-4 text-accent inline" />
+                        </motion.span>
+                      </CardTitle>
                       <span className="text-sm font-medium text-muted-foreground">
                         {edu.period}
                       </span>

@@ -144,4 +144,55 @@
   .skill-card:hover::before {
     @apply opacity-100;
   }
+  
+  .section-heading-line {
+    @apply h-1 w-24 mx-auto mt-3 bg-gradient-to-r from-primary via-accent to-secondary rounded-full;
+  }
+  
+  .fancy-underline {
+    @apply relative inline-block;
+  }
+  
+  .fancy-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary via-accent to-secondary scale-x-0 origin-left transition-transform duration-300;
+  }
+  
+  .fancy-underline:hover::after {
+    @apply scale-x-100;
+  }
+  
+  .custom-arrow {
+    @apply inline-block ml-1 transition-transform duration-300 ease-in-out;
+  }
+  
+  .hover-arrow:hover .custom-arrow {
+    @apply translate-x-1;
+  }
+  
+  .floating-animation {
+    animation: floating 3s ease-in-out infinite;
+  }
+  
+  @keyframes floating {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .pulse-animation {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
 }
