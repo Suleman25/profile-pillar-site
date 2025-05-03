@@ -5,20 +5,33 @@ import { useState } from "react";
 // Logo animation variants
 const logoVariants = {
   hidden: { scale: 0.8, opacity: 0 },
-  visible: { 
+  visible: (i = 0) => ({
     scale: 1, 
     opacity: 1,
     transition: {
+      delay: i * 0.1,
       type: "spring",
       stiffness: 260,
       damping: 20
     }
-  },
+  }),
   hover: { 
     scale: 1.1,
     transition: { 
       duration: 0.3,
       ease: "easeInOut"
+    }
+  }
+};
+
+// Enhanced container animation
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
     }
   }
 };
@@ -91,7 +104,7 @@ export function TechStackSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-2xl md:text-3xl font-bold text-center text-foreground"
+            className="text-2xl md:text-3xl font-bold text-center gradient-text-primary"
           >
             My Tech Stack
           </motion.h2>
@@ -100,27 +113,30 @@ export function TechStackSection() {
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-3 h-1 w-24 bg-primary rounded-full"
+            className="section-heading-line"
           />
         </div>
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-6 justify-items-center">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-6 justify-items-center"
+        >
           {techStack.map((tech, index) => (
             <motion.div
               key={tech.name}
-              initial="hidden"
-              whileInView="visible"
-              whileHover="hover"
-              viewport={{ once: true }}
               variants={logoVariants}
               custom={index}
+              whileHover="hover"
               className="flex flex-col items-center justify-center gap-3 relative"
             >
               <motion.div
-                className="w-14 h-14 flex items-center justify-center overflow-hidden rounded-lg cursor-pointer"
+                className="w-14 h-14 flex items-center justify-center overflow-hidden rounded-lg cursor-pointer gradient-border"
                 whileHover={{ 
                   y: -3,
-                  boxShadow: `0 0 8px 1px rgba(0,0,0,0.1)`
+                  boxShadow: `0 0 12px 2px rgba(0,0,0,0.1)`
                 }}
                 onClick={() => toggleDescription(tech.name)}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -153,7 +169,7 @@ export function TechStackSection() {
               )}
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

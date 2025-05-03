@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 
-// Animation variants
+// Enhanced animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: (i = 0) => ({
@@ -27,6 +27,25 @@ const staggerContainer = {
       staggerChildren: 0.2,
       delayChildren: 0.3
     }
+  }
+};
+
+const imageVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      type: "spring",
+      stiffness: 100,
+      damping: 20
+    }
+  },
+  hover: {
+    scale: 1.02,
+    boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+    transition: { duration: 0.4 }
   }
 };
 
@@ -52,7 +71,6 @@ export function HeroSection() {
     const link = document.createElement("a");
     
     // Set the link's href to the resume PDF file
-    // Note: This assumes you have a resume.pdf file in your public folder
     link.href = "/resume.pdf";
     
     // Set download attribute to suggest a filename when downloaded
@@ -82,7 +100,7 @@ export function HeroSection() {
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 <span className="block">Hi, I'm</span>
                 <motion.span 
-                  className="block mt-2 text-primary"
+                  className="block mt-2 gradient-text-primary"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6, duration: 0.8 }}
@@ -124,49 +142,42 @@ export function HeroSection() {
               custom={2} 
               className="flex flex-wrap gap-4"
             >
-              <Button asChild size="lg" className="group">
+              <Button asChild size="lg" className="group gradient-border">
                 <Link to="#projects">
                   View Projects
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="gradient-border">
                 <Link to="#contact">Contact Me</Link>
               </Button>
               <Button 
                 onClick={handleDownloadResume} 
                 variant="secondary" 
                 size="lg" 
-                className="group"
+                className="group gradient-border"
               >
-                <span>Download Resume</span>
+                <span>Resume</span>
                 <Download className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
               </Button>
             </motion.div>
           </motion.div>
           
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              duration: 0.8,
-              type: "spring",
-              stiffness: 100,
-              damping: 20
-            }}
+            initial="hidden"
+            animate="visible"
+            whileHover="hover"
+            variants={imageVariants}
             className="flex justify-center"
           >
-            <motion.div 
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.4 }}
-              className="relative rounded-full overflow-hidden border-2 border-border shadow-lg w-64 h-64 md:w-80 md:h-80"
-            >
+            <div className="relative rounded-full overflow-hidden border-2 border-border shadow-lg w-64 h-64 md:w-80 md:h-80 gradient-border">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-30"></div>
               <img 
                 src="/lovable-uploads/cdd634d0-9844-4f05-88b1-6c2d27daec5f.png"
                 alt="Muhammad Suleman"
                 className="w-full h-full object-cover"
               />
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>
