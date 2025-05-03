@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronRight } from "lucide-react";
@@ -9,7 +8,7 @@ import { motion } from "framer-motion";
 const navItems = [
   { name: "Home", path: "/" },
   { name: "About", path: "/#about" },
-  { name: "Projects", path: "/projects" }, // Updated to direct link to projects page
+  { name: "Projects", path: "/projects" },
   { name: "Contact", path: "/#contact" },
 ];
 
@@ -97,15 +96,16 @@ export function Header() {
 
   // Smooth scroll to section or navigate to page
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    // Always prevent default for proper handling
     e.preventDefault();
     
     // Handle direct page links
-    if (path === "/projects" || path === "/about" || path === "/contact") {
+    if (path === "/projects") {
       window.location.href = path;
       return;
     }
     
-    // If it's a hash link
+    // If it's a hash link on the homepage
     if (path.startsWith('/#')) {
       const targetId = path.replace('/#', '');
       const element = document.getElementById(targetId);
@@ -116,6 +116,9 @@ export function Header() {
           behavior: 'smooth'
         });
         setActiveSection(targetId);
+      } else {
+        // If we're not on the homepage, navigate there first
+        window.location.href = path;
       }
     } else {
       // Handle regular navigation
@@ -125,11 +128,11 @@ export function Header() {
 
   // Determine if a nav item is active
   const isActive = (path: string) => {
-    if (path === "/") return activeSection === "";
+    if (path === "/") return activeSection === "" && location.pathname === "/";
     if (path === "/projects") return location.pathname === "/projects";
-    if (path === "/about") return location.pathname === "/about";
-    if (path === "/contact") return location.pathname === "/contact";
-    return path === `/#${activeSection}`;
+    if (path === "/#about") return activeSection === "about";
+    if (path === "/#contact") return activeSection === "contact";
+    return false;
   };
 
   return (

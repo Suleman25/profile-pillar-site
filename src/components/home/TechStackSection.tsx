@@ -1,7 +1,6 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ChevronRight } from "lucide-react";
 
 // Logo animation variants
 const logoVariants = {
@@ -135,21 +134,15 @@ export function TechStackSection() {
               </motion.div>
               <div className="flex items-center gap-1">
                 <motion.span 
-                  className="text-xs font-medium text-muted-foreground"
+                  className="text-xs font-medium text-muted-foreground cursor-pointer"
                   whileHover={{ 
                     scale: 1.1,
                     color: tech.color
                   }}
+                  onClick={() => toggleDescription(tech.name)}
                 >
                   {tech.name}
                 </motion.span>
-                <motion.div
-                  animate={{ rotate: expandedTech === tech.name ? 90 : 0 }}
-                  className="cursor-pointer"
-                  onClick={() => toggleDescription(tech.name)}
-                >
-                  <ChevronRight className="h-3 w-3 text-muted-foreground" />
-                </motion.div>
               </div>
               
               {expandedTech === tech.name && (
