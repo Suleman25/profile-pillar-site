@@ -1,8 +1,9 @@
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 
 // Animation variants
 const fadeInUp = {
@@ -29,7 +30,23 @@ const staggerContainer = {
   }
 };
 
+const jobTitles = [
+  "Software Engineer",
+  "Full-Stack Developer",
+  "Social Media Marketer"
+];
+
 export function HeroSection() {
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % jobTitles.length);
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center">
       <div className="container">
@@ -52,9 +69,21 @@ export function HeroSection() {
                   Muhammad Suleman
                 </motion.span>
               </h1>
-              <p className="mt-4 text-xl text-muted-foreground">
-                Software Engineer & Full-Stack Developer
-              </p>
+              
+              <div className="h-16 mt-4">
+                <AnimatePresence mode="wait">
+                  <motion.p 
+                    key={currentTitleIndex}
+                    className="text-xl sm:text-2xl font-heading text-primary"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {jobTitles[currentTitleIndex]}
+                  </motion.p>
+                </AnimatePresence>
+              </div>
             </motion.div>
             <motion.p 
               variants={fadeInUp} 
@@ -69,10 +98,10 @@ export function HeroSection() {
               custom={2} 
               className="flex flex-wrap gap-4"
             >
-              <Button asChild size="lg">
+              <Button asChild size="lg" className="group">
                 <Link to="/projects">
                   View Projects
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
@@ -95,12 +124,18 @@ export function HeroSection() {
             <motion.div 
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.4 }}
-              className="rounded-full overflow-hidden border-4 border-primary/20 shadow-xl w-64 h-64 md:w-80 md:h-80"
+              className="relative rounded-full overflow-hidden border-4 border-primary/20 shadow-xl w-64 h-64 md:w-80 md:h-80"
             >
               <img 
                 src="/lovable-uploads/cdd634d0-9844-4f05-88b1-6c2d27daec5f.png"
                 alt="Muhammad Suleman"
                 className="w-full h-full object-cover"
+              />
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 1 }}
               />
             </motion.div>
           </motion.div>

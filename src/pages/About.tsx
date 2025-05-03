@@ -1,15 +1,38 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 
 const skills = [
-  { name: "React", level: 90 },
-  { name: "JavaScript", level: 85 },
-  { name: "Node.js", level: 80 },
-  { name: "CSS/Tailwind", level: 95 },
-  { name: "SQL/PostgreSQL", level: 82 },
-  { name: "UX/UI Design", level: 75 },
+  { 
+    name: "React", 
+    icon: "💻", 
+    description: "Building modern and interactive user interfaces with React and its ecosystem."
+  },
+  { 
+    name: "JavaScript", 
+    icon: "🔧", 
+    description: "Developing dynamic web applications with clean and efficient JavaScript code."
+  },
+  { 
+    name: "Node.js", 
+    icon: "⚙️", 
+    description: "Creating backend services and RESTful APIs with Node.js and Express."
+  },
+  { 
+    name: "CSS/Tailwind", 
+    icon: "🎨", 
+    description: "Designing responsive layouts and beautiful UI components with Tailwind CSS."
+  },
+  { 
+    name: "SQL/PostgreSQL", 
+    icon: "🗄️",
+    description: "Designing and optimizing database schemas and queries for efficient data management."
+  },
+  { 
+    name: "UX/UI Design", 
+    icon: "✏️",
+    description: "Creating user-centered designs that balance aesthetics and functionality."
+  },
 ];
 
 const experiences = [
@@ -41,11 +64,11 @@ const education = [
 
 // Animation variants
 const sectionVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6 }
+    transition: { duration: 0.7, ease: "easeOut" }
   },
 };
 
@@ -54,7 +77,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
     },
   },
 };
@@ -64,7 +87,7 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.3 }
+    transition: { duration: 0.5, ease: "easeOut" }
   },
 };
 
@@ -72,7 +95,7 @@ export default function About() {
   return (
     <div className="flex-1 pb-20">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-background to-muted/50">
+      <section className="py-20 md:py-32 bg-gradient-to-b from-background to-muted/30">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -80,7 +103,7 @@ export default function About() {
             variants={sectionVariants}
             className="max-w-3xl mx-auto text-center"
           >
-            <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+            <h1 className="text-3xl md:text-5xl font-bold gradient-text-primary">
               About Me
             </h1>
             <p className="mt-6 text-xl text-muted-foreground">
@@ -93,15 +116,15 @@ export default function About() {
 
       {/* Skills Section */}
       <section className="section-padding">
-        <div className="container max-w-5xl">
+        <div className="container max-w-6xl">
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={sectionVariants}
             className="mb-12 text-center"
           >
-            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-3xl font-bold gradient-text-primary">
               Technical Skills
             </h2>
             <p className="mt-4 text-muted-foreground">
@@ -113,24 +136,24 @@ export default function About() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
-            className="space-y-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.name}
                 variants={itemVariants}
-                custom={index}
-                className="space-y-2"
+                whileHover={{ scale: 1.03, y: -5 }}
+                className="skill-card"
               >
-                <div className="flex justify-between items-center">
-                  <span className="font-medium">{skill.name}</span>
-                  <span className="text-sm text-muted-foreground">
-                    {skill.level}%
-                  </span>
+                <div className="flex items-start gap-4">
+                  <div className="text-3xl">{skill.icon}</div>
+                  <div>
+                    <h3 className="text-lg font-medium text-primary mb-2">{skill.name}</h3>
+                    <p className="text-sm text-muted-foreground">{skill.description}</p>
+                  </div>
                 </div>
-                <Progress value={skill.level} className="h-2" />
               </motion.div>
             ))}
           </motion.div>
@@ -143,11 +166,11 @@ export default function About() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={sectionVariants}
             className="mb-12 text-center"
           >
-            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-3xl font-bold gradient-text-primary">
               Work Experience
             </h2>
             <p className="mt-4 text-muted-foreground">
@@ -158,7 +181,7 @@ export default function About() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
             className="grid grid-cols-1 gap-6"
           >
@@ -167,16 +190,17 @@ export default function About() {
                 key={exp.company} 
                 variants={itemVariants}
                 custom={index}
+                whileHover={{ scale: 1.02 }}
               >
-                <Card className="bg-background/80 backdrop-blur-sm">
+                <Card className="glass-card overflow-hidden">
                   <CardHeader>
                     <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
-                      <CardTitle>{exp.position}</CardTitle>
+                      <CardTitle className="text-primary">{exp.position}</CardTitle>
                       <span className="text-sm font-medium text-muted-foreground">
                         {exp.period}
                       </span>
                     </div>
-                    <CardDescription className="text-primary font-medium">
+                    <CardDescription className="font-medium text-lg">
                       {exp.company}
                     </CardDescription>
                   </CardHeader>
@@ -196,11 +220,11 @@ export default function About() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={sectionVariants}
             className="mb-12 text-center"
           >
-            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-3xl font-bold gradient-text-primary">
               Education
             </h2>
             <p className="mt-4 text-muted-foreground">
@@ -211,7 +235,7 @@ export default function About() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
             className="grid grid-cols-1 gap-6"
           >
@@ -220,16 +244,17 @@ export default function About() {
                 key={edu.degree} 
                 variants={itemVariants}
                 custom={index}
+                whileHover={{ scale: 1.02 }}
               >
-                <Card className="bg-background/80 backdrop-blur-sm">
+                <Card className="glass-card overflow-hidden">
                   <CardHeader>
                     <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
-                      <CardTitle>{edu.degree}</CardTitle>
+                      <CardTitle className="text-primary">{edu.degree}</CardTitle>
                       <span className="text-sm font-medium text-muted-foreground">
                         {edu.period}
                       </span>
                     </div>
-                    <CardDescription className="text-primary font-medium">
+                    <CardDescription className="font-medium text-lg">
                       {edu.institution}
                     </CardDescription>
                   </CardHeader>
