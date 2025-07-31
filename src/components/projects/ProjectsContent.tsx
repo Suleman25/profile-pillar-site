@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, ListTodo, Code, BarChart3, Layers } from "lucide-react";
+import { ArrowRight, Github, ListTodo, Code, BarChart3, Layers, MessageSquare, MessageCircle, Calculator, User, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -27,44 +27,52 @@ const projects = [
   },
   {
     id: 2,
-    title: "Analytics Dashboard",
-    description:
-      "Interactive analytics dashboard with real-time data visualization, customizable widgets, and comprehensive reporting features for business intelligence.",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-    icon: <BarChart3 className="h-24 w-24 text-primary" />,
+    title: "Joy Sync Message",
+    description: "A real-time chat application dashboard built with React, Tailwind CSS, Shadcn UI, Supabase, and Socket.io, developed using Vite and deployed with Vercel for seamless communication.",
+    image: "/lovable-uploads/chat-app-dashboard.png",
+    icon: <MessageSquare className="h-24 w-24 text-primary" />,
     category: "Web",
-    tags: ["React", "TypeScript", "Recharts", "Redux"],
-    githubUrl: "#",
+    tags: ["React", "TailwindCSS", "Shadcn UI", "Supabase", "Socket.io", "Vite", "Vercel"],
+    githubUrl: "https://github.com/Suleman25/joy-sync-message.git",
     demoUrl: "#",
   },
   {
     id: 3,
-    title: "Code Snippets",
-    description:
-      "A developer-focused application for saving and organizing code snippets with syntax highlighting, tags, and search functionality.",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
-    icon: <Code className="h-24 w-24 text-primary" />,
-    category: "Web",
-    tags: ["React", "Next.js", "MongoDB", "Prism.js"],
-    githubUrl: "#",
+    title: "Chatbot",
+    description: "An AI-powered chatbot using React, Tailwind CSS, and Google AI Studio's Gemini API for natural language processing.",
+    image: "/lovable-uploads/chat-bot.png",
+    icon: <MessageCircle className="h-24 w-24 text-primary" />,
+    category: "AI",
+    tags: ["React", "TailwindCSS", "Google AI Studio", "Gemini API"],
+    githubUrl: "https://github.com/Suleman25/chatbot.git",
     demoUrl: "#",
   },
   {
     id: 4,
-    title: "UI Component Library",
-    description:
-      "A comprehensive collection of reusable UI components built with React and styled with Tailwind CSS, complete with documentation and examples.",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-    icon: <Layers className="h-24 w-24 text-primary" />,
-    category: "Design",
-    tags: ["React", "Tailwind CSS", "Storybook", "TypeScript"],
-    githubUrl: "#",
+    title: "Age Calculator",
+    description: "A simple web-based age calculator application built with React, TypeScript, and Tailwind CSS.",
+    image: "/lovable-uploads/age-calculator.png",
+    icon: <Calculator className="h-24 w-24 text-primary" />,
+    category: "Web",
+    tags: ["React", "TypeScript", "TailwindCSS"],
+    githubUrl: "https://github.com/Suleman25/CodeAlpha_AgeCalculator.git",
     demoUrl: "#",
-  }
+  },
+  {
+    id: 5,
+    title: "Profile Pillar Site",
+    description: "A personal portfolio website to showcase projects and skills.",
+    image: "/lovable-uploads/portfolio.png",
+    icon: <User className="h-24 w-24 text-primary" />,
+    category: "Web",
+    tags: ["React", "TypeScript", "TailwindCSS", "Vite"],
+    githubUrl: "https://github.com/Suleman25/profile-pillar-site.git",
+    demoUrl: "#",
+  },
 ];
 
 // Categories for filtering
-const categories = ["All", "Web", "Mobile", "Design"];
+const categories = ["All", "Web", "Mobile", "AI"];
 
 interface ProjectsContentProps {
   isHomePage?: boolean;
@@ -194,17 +202,22 @@ export function ProjectsContent({ isHomePage = false }: ProjectsContentProps) {
                     </div>
                   </CardContent>
                   <CardFooter className="flex items-center justify-between">
-                    <Button variant="ghost" size="sm" asChild>
-                      <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                        View Demo
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </a>
-                    </Button>
-                    <Button variant="outline" size="icon" className="rounded-full" asChild>
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <Github className="h-4 w-4" />
-                      </a>
-                    </Button>
+                    {project.demoUrl && project.demoUrl !== "#" && (
+                      <Button variant="ghost" size="sm" asChild>
+                        <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                          View Demo
+                          <ExternalLink className="ml-2 h-4 w-4" />
+                        </a>
+                      </Button>
+                    )}
+                    {project.githubUrl && (
+                      <Button variant={project.demoUrl && project.demoUrl !== "#" ? "outline" : "ghost"} size={project.demoUrl && project.demoUrl !== "#" ? "icon" : "sm"} asChild>
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                          {project.demoUrl && project.demoUrl !== "#" ? <Github className="h-4 w-4" /> : "View on GitHub"}
+                          {project.demoUrl && project.demoUrl === "#" && <Github className="ml-2 h-4 w-4" />}
+                        </a>
+                      </Button>
+                    )}
                   </CardFooter>
                 </Card>
               </motion.div>

@@ -84,7 +84,7 @@ export function Footer() {
               <Github className="h-5 w-5" />
             </motion.a>
             <motion.a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/muhammad-suleman-3294942b8"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"

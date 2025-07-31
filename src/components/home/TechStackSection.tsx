@@ -1,6 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresence
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card"; // Using Card for popover styling
+import { FaReact, FaNodeJs, FaJs, FaPython, FaAws, FaGithub, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import { SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiDjango } from "react-icons/si";
+import { BiLogoPostgresql } from "react-icons/bi";
 
 // --- Consistent Animation Variants ---
 const sectionVariants = {
@@ -58,14 +61,19 @@ const popoverVariants = {
 
 // --- Tech Stack Data --- (Ensure logo paths are correct relative to your public folder)
 const techStack = [
-  { name: "React", icon: "/logos/react.svg", color: "#61DAFB", description: "Building interactive UIs with component-based architecture." },
-  { name: "Node.js", icon: "/logos/nodejs.svg", color: "#43853D", description: "Creating efficient, scalable server-side applications." },
-  { name: "JavaScript", icon: "/logos/javascript.svg", color: "#F7DF1E", description: "Implementing dynamic web functionality with modern ES features." },
-  { name: "Next.js", icon: "/logos/nextjs.svg", color: "#FFFFFF", description: "Optimized React apps with SSR, SSG, and file-based routing." },
-  { name: "TailwindCSS", icon: "/logos/tailwindcss.svg", color: "#06B6D4", description: "Rapidly building custom UIs with a utility-first approach." },
-  { name: "MongoDB", icon: "/logos/mongodb.svg", color: "#00ED64", description: "Flexible NoSQL database for scalable data storage." },
-  { name: "PostgreSQL", icon: "/logos/postgresql.svg", color: "#336791", description: "Powerful relational database with advanced SQL capabilities." },
-  { name: "Django", icon: "/logos/django.svg", color: "#44B78B", description: "High-level Python framework for secure web applications." }
+  { name: "React", icon: <FaReact className="h-full w-full" />, color: "#61DAFB", description: "Building interactive UIs with component-based architecture." },
+  { name: "Node.js", icon: <FaNodeJs className="h-full w-full" />, color: "#43853D", description: "Creating efficient, scalable server-side applications." },
+  { name: "JavaScript", icon: <FaJs className="h-full w-full" />, color: "#F7DF1E", description: "Implementing dynamic web functionality with modern ES features." },
+  { name: "Next.js", icon: <SiNextdotjs className="h-full w-full" />, color: "#FFFFFF", description: "Optimized React apps with SSR, SSG, and file-based routing." },
+  { name: "TailwindCSS", icon: <SiTailwindcss className="h-full w-full" />, color: "#06B6D4", description: "Rapidly building custom UIs with a utility-first approach." },
+  { name: "MongoDB", icon: <SiMongodb className="h-full w-full" />, color: "#00ED64", description: "Flexible NoSQL database for scalable data storage." },
+  { name: "PostgreSQL", icon: <BiLogoPostgresql className="h-full w-full" />, color: "#336791", description: "Powerful relational database with advanced SQL capabilities." },
+  { name: "Django", icon: <SiDjango className="h-full w-full" />, color: "#44B78B", description: "High-level Python framework for secure web applications." },
+  { name: "Python", icon: <FaPython className="h-full w-full" />, color: "#3776AB", description: "Versatile language for backend, data science, and automation." },
+  { name: "AWS", icon: <FaAws className="h-full w-full" />, color: "#FF9900", description: "Leveraging cloud services for scalable and robust solutions." },
+  { name: "GitHub", icon: <FaGithub className="h-full w-full" />, color: "#181717", description: "Version control and collaboration platform for software development." },
+  { name: "HTML", icon: <FaHtml5 className="h-full w-full" />, color: "#E34F26", description: "Standard markup language for creating web pages and web applications." },
+  { name: "CSS", icon: <FaCss3Alt className="h-full w-full" />, color: "#1572B6", description: "Stylesheet language used for describing the presentation of a document written in HTML." }
 ];
 
 
@@ -129,13 +137,7 @@ export function TechStackSection() {
                  // Apply a subtle shadow glow on hover using the tech's color
                 style={{ '--tech-glow-color': tech.color } as React.CSSProperties}
               >
-                <img
-                  src={tech.icon}
-                  alt={`${tech.name} logo`}
-                  className="w-full h-full object-contain" // Ensure logo fits well
-                  // Add lazy loading for performance
-                  loading="lazy"
-                />
+                {tech.icon}
               </div>
 
               {/* Tech Name */}
