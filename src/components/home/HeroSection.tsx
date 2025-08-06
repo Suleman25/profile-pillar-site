@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Download, Send } from "lucide-react"; // Added Send icon
+import { ArrowRight } from "lucide-react"; // Added Send icon
 import { Link } from "react-router-dom"; // Assuming you might use this for contact
 import { Button } from "@/components/ui/button"; // Keep using your Button component
 import { useState, useEffect } from "react";
@@ -80,21 +80,6 @@ export function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleDownloadResume = () => {
-    try {
-      const link = document.createElement("a");
-      link.href = "/CV[1].docx"; // Ensure this path is correct in your /public folder
-      link.download = "Muhammad_Suleman_CV.docx";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch (error) {
-      console.error("Error downloading resume:", error);
-      // Consider using a toast notification library for better UX
-      alert("Sorry, there was an error downloading the resume. Please try again later.");
-    }
-  };
-
   return (
     <section className="hero-section-bg relative min-h-screen flex flex-col justify-center py-20 md:py-32 overflow-hidden"> {/* Added padding, overflow hidden, custom bg */}
       <div className="container relative z-10"> {/* Ensure content is above bg effects */}
@@ -108,8 +93,7 @@ export function HeroSection() {
             className="flex flex-col gap-6 text-center md:text-left" // Center text on mobile
           >
             <motion.div variants={fadeInUp} custom={0}>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter leading-tight"> {/* Tighter tracking, bold weight */}
-                <span className="block text-muted-foreground/80 text-lg sm:text-xl font-medium mb-2">Hi, I'm</span> {/* Subdued intro */}
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tighter leading-tight"> {/* Increased font size */}
                 <motion.span
                   className="block premium-gradient-text" // Apply custom gradient class
                   // Optional: animate gradient on hover/focus if needed
@@ -122,7 +106,7 @@ export function HeroSection() {
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={currentTitleIndex}
-                    className="text-xl sm:text-2xl md:text-3xl font-semibold text-foreground" // Use foreground color, slightly bolder
+                    className="text-xl sm:text-2xl md:text-3xl font-semibold premium-gradient-text text-transparent" // Apply gradient to job title
                     initial="initial"
                     animate="animate"
                     exit="exit"
@@ -151,21 +135,7 @@ export function HeroSection() {
               className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 mt-6" // Responsive button layout
             >
               {/* Primary CTA with ShinyButton */}
-              <Link to="/contact" className="w-full sm:w-auto"> {/* Link example */}
-                <ShinyButton className="w-full sm:w-auto flex items-center justify-center">
-                  Get in Touch
-                  <Send className="ml-2 h-4 w-4 transition-transform duration-300 ease-out" />
-                </ShinyButton>
-              </Link>
-
               {/* Secondary CTA with ShinyButton */}
-              <ShinyButton 
-                onClick={handleDownloadResume}
-                className="w-full sm:w-auto flex items-center justify-center"
-              >
-                <span>My Resume</span>
-                <Download className="ml-2 h-4 w-4 transition-transform duration-300 ease-out" />
-              </ShinyButton>
             </motion.div>
           </motion.div>
 
@@ -183,7 +153,7 @@ export function HeroSection() {
                 {/* Optional: Inner subtle gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-black/0 via-black/0 to-black/10 opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-10"></div>
                 <img
-                  src="/lovable-uploads/cdd634d0-9844-4f05-88b1-6c2d27daec5f.png"
+                  src="/lovable-uploads/me.jpg"
                   alt="Muhammad Suleman - Professional Portrait" // More descriptive alt text
                   className="w-full h-full object-cover relative z-0 transform scale-105 group-hover:scale-100 transition-transform duration-700 ease-out" // Subtle zoom out on hover
                 />

@@ -5,6 +5,7 @@ import { FeaturedProjectsSection } from "@/components/home/FeaturedProjectsSecti
 import { CTASection } from "@/components/home/CTASection";
 import { AboutSection } from "@/components/home/AboutSection";
 import { ContactSection } from "@/components/home/ContactSection";
+import { CertificatesSection } from "@/components/home/CertificatesSection";
 import { ProjectsContent } from "@/components/projects/ProjectsContent";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <div id="projects">
         <ProjectsContent isHomePage={true} />
       </div>
+      <CertificatesSection />
       <ContactSection />
       <CTASection />
     </div>

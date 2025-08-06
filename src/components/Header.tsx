@@ -9,6 +9,7 @@ const navItems = [
   { name: "Home", path: "/" },
   { name: "About", path: "/#about" },
   { name: "Projects", path: "/#projects" },
+  { name: "Certifications", path: "/#certificates" },
   { name: "Contact", path: "/#contact" },
 ];
 
@@ -53,7 +54,7 @@ export function Header() {
       setScrolled(window.scrollY > 10);
       // Simplified active section detection (same as previous version)
       let currentSection = "";
-      const sections = ["about", "projects", "contact"];
+      const sections = ["about", "projects", "certificates", "contact"];
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -112,6 +113,7 @@ export function Header() {
     if (path === "/" && !activeSection && location.pathname === "/") return true;
     if (path === "/#about" && activeSection === "about") return true;
     if (path === "/#projects" && activeSection === "projects") return true;
+    if (path === "/#certificates" && activeSection === "certificates") return true; // Added for Certifications
     if (path === "/#contact" && activeSection === "contact") return true;
     return false;
   };
