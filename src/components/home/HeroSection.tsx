@@ -106,7 +106,7 @@ export function HeroSection() {
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={currentTitleIndex}
-                    className="text-xl sm:text-2xl md:text-3xl font-semibold premium-gradient-text text-transparent" // Apply gradient to job title
+                    className="text-xl sm:text-2xl md:text-3xl font-semibold premium-gradient-text" // Apply gradient to job title
                     initial="initial"
                     animate="animate"
                     exit="exit"
